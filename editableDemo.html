@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #floatingToolbox {
+            border: 1px solid #282c34;
+            padding: 0.25rem;
+            width: 10rem;
+            position: absolute;
+            display: none;
+        }
+
+        #floatingToolbox svg {
+            border: 1px solid #282c34;
+        }
+    </style>
+</head>
+<body>
+    <div id="floatingToolbox">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-bold"
+             viewBox="0 0 16 16">
+            <path d="M8.21 13c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 0 0 1.852-2.14c0-1.51-1.162-2.46-3.014-2.46H3.843V13zM5.908 4.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H5.908V4.673zm0 6.788V8.598h1.73c1.217 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H5.907z"/>
+        </svg>
+    </div>
+    <label>
+        <input type="checkbox" name="editable" id="editchkbox">
+        Editable
+    </label>
+    <div id="editable">
+        <p>박스를 체크하고 여기를 눌러 <span style="font-weight: bold;">직접 수정할 수 </span> 있습니다.</p>
+        <p>shift+enter키로 새 paragraph를 만들 수 있습니다.</p>
+        <cite>-- cite</cite>
+    </div>
+</body>
+
+<script>
+    const textInput = document.getElementById('editable');
+    const floatingToolbox = document.getElementById('floatingToolbox');
+    const chkbox = document.querySelector('#editchkbox')
+
+    chkbox.addEventListener('change', function () {
+        if (this.checked) {
+            Array.from(textInput.children).forEach(elem => elem.setAttribute('contenteditable', 'true'));
+        } else {
+            Array.from(textInput.children).forEach(elem => elem.removeAttribute('contenteditable'))
+        }
+    });
+    textInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' && event.shiftKey) {
+            event.preventDefault();
+            const currentElement = document.activeElement;
+            if (currentElement.getAttribute('contenteditable')) {
+                const newParagraph = document.createElement('p');
+                newParagraph.setAttribute('contenteditable', 'true');
+                currentElement.parentNode.insertBefore(newParagraph, currentElement.nextSibling);
+                newParagraph.focus();
+            }
+        }
+    });
+</script>
+</html>
