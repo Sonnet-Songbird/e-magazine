@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Sonnet-Songbird/e-magazine/static/css/main.739c493e.css",
-    "main.js": "/Sonnet-Songbird/e-magazine/static/js/main.88d86133.js",
-    "static/js/453.4c62a731.chunk.js": "/Sonnet-Songbird/e-magazine/static/js/453.4c62a731.chunk.js",
-    "index.html": "/Sonnet-Songbird/e-magazine/index.html",
-    "main.739c493e.css.map": "/Sonnet-Songbird/e-magazine/static/css/main.739c493e.css.map",
-    "main.88d86133.js.map": "/Sonnet-Songbird/e-magazine/static/js/main.88d86133.js.map",
-    "453.4c62a731.chunk.js.map": "/Sonnet-Songbird/e-magazine/static/js/453.4c62a731.chunk.js.map"
+    "main.css": "/e-magazine/static/css/main.739c493e.css",
+    "main.js": "/e-magazine/static/js/main.9bcc636e.js",
+    "static/js/453.4c62a731.chunk.js": "/e-magazine/static/js/453.4c62a731.chunk.js",
+    "index.html": "/e-magazine/index.html",
+    "main.739c493e.css.map": "/e-magazine/static/css/main.739c493e.css.map",
+    "main.9bcc636e.js.map": "/e-magazine/static/js/main.9bcc636e.js.map",
+    "453.4c62a731.chunk.js.map": "/e-magazine/static/js/453.4c62a731.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.739c493e.css",
-    "static/js/main.88d86133.js"
+    "static/js/main.9bcc636e.js"
   ]
 }
