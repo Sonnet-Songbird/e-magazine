@@ -19,7 +19,7 @@ const PaperAlbumDesktopTheme = ({contents, functions, utils}) => {
         chkboxes.forEach((item, index) => {
             item.removeAttribute("checked");
 
-            if (index <= pageIdx) {
+            if (index < pageIdx) {
                 item.setAttribute("checked", "");
             }
         });
@@ -54,11 +54,11 @@ const PaperAlbumDesktopTheme = ({contents, functions, utils}) => {
             const backContent = contents[pageNumber * 2];
             return (
                 <div className="flip" key={pageNumber} id={`p${pageNumber}`}>
-                    <div className="front" onClick={() => goTo(selectedChkbox+2)}>
+                    <div className="front" onClick={() => goTo(selectedChkbox + 2)}>
                         {frontContent !== undefined && frontContent}
                     </div>
                     {backContent !== undefined &&
-                        <div className="back" onClick={() => goTo(selectedChkbox-2)}>
+                        <div className="back" onClick={() => goTo(selectedChkbox - 2)}>
                             {backContent}
                         </div>
                     }
