@@ -33,13 +33,13 @@ img {
 }
 
 #cover {
-    width: 250px;
-    height: 400px;
+    width: 400px;
+    height: 640px;
 }
 
 .flip-book {
-    width: 250px;
-    height: 400px;
+    width: 400px;
+    height: 640px;
     position: relative;
     perspective: 1500px;
 }
@@ -70,7 +70,6 @@ p {
     left: 0;
     background-color: #fafafa;
     box-sizing: border-box;
-    padding: 0 13px;
 }
 
 .back {
@@ -99,24 +98,3 @@ p {
     cursor: pointer;
     color: #fff;
 }
-/*#p1 {*/
-/*    z-index: 3;*/
-/*}*/
-/*#p2 {*/
-/*    z-index: 2;*/
-/*}*/
-/*#p3 {*/
-/*    z-index: 1;*/
-/*}*/
-/*#c1:checked ~ .flip-book #p1 {*/
-/*    transform: rotateY(-180deg);*/
-/*    z-index: 1;*/
-/*}*/
-/*#c2:checked ~ .flip-book #p2 {*/
-/*    transform: rotateY(-180deg);*/
-/*    z-index: 2;*/
-/*}*/
-/*#c3:checked ~ .flip-book #p3 {*/
-/*    transform: rotateY(-180deg);*/
-/*    z-index: 3;*/
-/*}*/
