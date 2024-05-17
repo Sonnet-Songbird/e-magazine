@@ -23,52 +23,52 @@
     {
       "idx": 4,
       "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/4.jpg\" alt=\"4번째 이미지\">",
-      "keyword": ["김간조"]
+      "keyword": ""
     },
     {
       "idx": 5,
       "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/5.jpg\" alt=\"5번째 이미지\">",
-      "keyword": ["조영길"]
+      "keyword": ""
     },
     {
       "idx": 6,
       "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/6.jpg\" alt=\"6번째 이미지\">",
-      "keyword": ["정동일", "김한규","천재호","홍종호","곽종우","강귀동","유재복","장성화","추외점","조채현","박장춘","송세문","양원식","김신인","서일훈"]
+      "keyword": ["김간조"]
     },
     {
       "idx": 7,
       "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/7.jpg\" alt=\"7번째 이미지\">",
-      "keyword": ""
+      "keyword": ["조영길"]
     },
     {
       "idx": 8,
       "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/8.jpg\" alt=\"8번째 이미지\">",
-      "keyword": ""
+      "keyword": ["정동일", "김한규","천재호","홍종호","곽종우","강귀동","유재복","장성화","추외점","조채현","박장춘","송세문","양원식","김신인","서일훈"]
     },
     {
       "idx": 9,
       "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/9.jpg\" alt=\"9번째 이미지\">",
-      "keyword": ""
+      "keyword": ["박승근", "우홍재", "김상석", "옥영식", "황현재", "최재생", "최종천", "김형일", "이원학", "한석칠", "박규일", "김진일", "김명배", "옥정오", "홍성천", "도광웅"]
     },
     {
       "idx": 10,
       "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/10.jpg\" alt=\"10번째 이미지\">",
-      "keyword": ""
+      "keyword": ["이일호", "진수명", "김광수", "배윤태", "조규득", "박동석", "오정일", "이정철", "정실근", "신중필", "김진구", "김상진", "최연기", "강석표", "윤명돌", "이종도", "김문기", "박철규", "최귀옹", "윤청남"]
     },
     {
       "idx": 11,
       "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/11.jpg\" alt=\"11번째 이미지\">",
-      "keyword": ""
+      "keyword": ["이종명", "김성준", "정인식", "주윤식", "차기환", "김명순"]
     },
     {
       "idx": 12,
       "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/12.jpg\" alt=\"12번째 이미지\">",
-      "keyword": ""
+      "keyword": ["1반", "김형일"]
     },
     {
       "idx": 13,
       "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/13.jpg\" alt=\"13번째 이미지\">",
-      "keyword": ""
+      "keyword": []
     },
     {
       "idx": 14,
@@ -183,7 +183,7 @@
     {
       "idx": 36,
       "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/36.jpg\" alt=\"36번째 이미지\">",
-      "keyword": ""
+      "keyword": ["김재희", "박동석"]
     },
     {
       "idx": 37,
@@ -193,7 +193,7 @@
     {
       "idx": 38,
       "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/38.jpg\" alt=\"38번째 이미지\">",
-      "keyword": ""
+      "keyword": ["김재희"]
     },
     {
       "idx": 39,
