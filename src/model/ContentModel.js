@@ -1,26 +1,26 @@
 import React from "react";
 import themeRepo from "../repository/themeRepo";
 import {GlassMagnifier} from "@niklasmaki/react-image-magnifiers";
-
+import constitution from "../repository/pages/constitution";
 import {ContextURL} from "../config";
 
 
 
 export class contentFetcher {
-    constructor(setPages, setTheme, jsonName) {
+    constructor(setPages, setTheme) {
         this.setPages = setPages;
         this.setTheme = setTheme;
-        this.jsonName = jsonName;
     }
 
     fetchPages() {
         try {
-            const jsonData = this.fetchPageData();
+            const jsonData = constitution;
             const pages = jsonData["pages"];
             this.setPages(pages);
             if (!jsonData["defaultTheme"]) {
                 return;
             }
+            console.log(themeRepo("앨범 템플릿"));
             this.setTheme(themeRepo()[jsonData["defaultTheme"]]);
 
         } catch (error) {

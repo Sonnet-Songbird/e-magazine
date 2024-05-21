@@ -53,7 +53,7 @@ const Viewer = () => {
     };
 
     const initloadPages = () => {
-        const pagePatcher = new contentFetcher(setPages, setTheme, "testImg");
+        const pagePatcher = new contentFetcher(setPages, setTheme);
         return pagePatcher.fetchPages();
     }
 

@@ -1,16 +1,21 @@
 const constitution = {
     "pages": [
         {
+            "idx": 0,
+            "content": ""
+
+        }
+        , {
             "idx": 1,
             "content": "<h1 style=\"text-align: center;\">회 칙</h1>\n" +
-                "    <p style=\"text-align: right; margin-block: 0.3rem\">1980년 11월 9일 개정</p>\n" +
-                "    <p style=\"text-align: right; margin-block: 0.3rem;\">1995년 11월 9일 개정</p>\n" +
-                "    <p style=\"text-align: right; margin-block: 0.3rem;\">1997년 11월 15일 개정</p>\n" +
-                "    <p style=\"text-align: right; margin-block: 0.3rem;\">2003년 11월 14일 개정</p>\n" +
-                "    <p style=\"text-align: right; margin-block: 0.3rem;\">2004년 2월 13일 개정</p>\n" +
-                "    <p style=\"text-align: right; margin-block: 0.3rem;\">2006년 2월 7일 개정</p>\n" +
-                "    <p style=\"text-align: right; margin-block: 0.3rem;\">2010년 6월 29일 개정</p>\n" +
-                "    <p style=\"text-align: right; margin-block: 0.3rem;\">2014년 5월 11일 개정</p>\n" +
+                "    <p style=\"text-align: right; margin-block: 0.2rem\">1980년 11월 9일 개정</p>\n" +
+                "    <p style=\"text-align: right; margin-block: 0.2rem;\">1995년 11월 9일 개정</p>\n" +
+                "    <p style=\"text-align: right; margin-block: 0.2rem;\">1997년 11월 15일 개정</p>\n" +
+                "    <p style=\"text-align: right; margin-block: 0.2rem;\">2003년 11월 14일 개정</p>\n" +
+                "    <p style=\"text-align: right; margin-block: 0.2rem;\">2004년 2월 13일 개정</p>\n" +
+                "    <p style=\"text-align: right; margin-block: 0.2rem;\">2006년 2월 7일 개정</p>\n" +
+                "    <p style=\"text-align: right; margin-block: 0.2rem;\">2010년 6월 29일 개정</p>\n" +
+                "    <p style=\"text-align: right; margin-block: 0.2rem;\">2014년 5월 11일 개정</p>\n" +
                 "    <h2 style=\"text-align: center;\">제 1장&nbsp;&nbsp;총&nbsp;&nbsp;&nbsp;&nbsp;칙</h2>\n" +
                 "    <h4 style=\"margin-block: 1rem;\">제 1 조 (명 칭) <span style=\"font-weight: normal;\">본회는 재경 해동고등학교총동창회라 칭한다</span></h4>\n" +
                 "    <h4 style=\"margin-block: 1rem;\">제 2 조 (목 적) <span style=\"font-weight: normal;\">본회는 모교 및 본부동문회와의 유대를 강화하고 회원 상호간의 친목을 도모하며 상부상조의 정신을 구현함을 목적으로 한다.</span>\n" +
@@ -44,8 +49,10 @@ const constitution = {
                 "    </ol>\n" +
                 "    <h4>제 7 조 (임원의 임기) <span style=\"font-weight: normal;\">임원의 임기는 2년으로 하고 연임할 수 있다. 단 보궐선거에 의하여 선출된 임원의 임기는 전임자의 잔여기간으로 한다. (회장의 임기는 1월1일에서 익년 12월31일까지 2년으로 한다)</span>\n" +
                 "    </h4>\n" +
-                "    <h4>제 8 조 (임원의 선출) <span style=\"font-weight: normal;\">임원은 총회에서 선출한다.</span></h4>\n" +
-                "    <h4>제 9 조 (임원의 직무)</h4>\n" +
+                "    <h4>제 8 조 (임원의 선출) <span style=\"font-weight: normal;\">임원은 총회에서 선출한다.</span></h4>\n"
+        }, {
+            "idx": 3,
+            "content": "<h4>제 9 조 (임원의 직무)</h4>\n" +
                 "    <ol type=\"1\">\n" +
                 "        <li>회장은 본회를 대표하여 본회를 총괄하며 각종 회의의 의장이 된다.</li>\n" +
                 "        <li>부회장은 회장을 보좌하며 회장 유고시에는 수석부회장이 그 직무를 대행한다. 수석부회장은 결격사유가 없는 한 차기회장직을 승계할 수 있다.</li>\n" +
@@ -58,7 +65,7 @@ const constitution = {
                 "    </ol>"
         }
         , {
-            "idx": 3,
+            "idx": 4,
             "content": "<h2 style=\"text-align: center;\">제 3장&nbsp;&nbsp;회&nbsp;&nbsp;&nbsp;&nbsp;의</h2>\n" +
                 "    <h4>제 11 조 (총 회)</h4>\n" +
                 "    <ol type=\"1\">\n" +
@@ -83,8 +90,11 @@ const constitution = {
                 "    <ol type=\"1\">\n" +
                 "        <li>이사회는 회장이 필요하다고 인정할 때 이를 소집한다.</li>\n" +
                 "        <li>회장은 재적이사 과반수의 요청이 있을 때에는 이사회를 소집해야 한다.</li>\n" +
-                "    </ol>\n" +
-                "    <h4>제 14 조 (이사회 등의 의결)</h4>\n" +
+                "    </ol>\n"
+        }
+        , {
+            "idx": 5,
+            "content": "<h4>제 14 조 (이사회 등의 의결)</h4>\n" +
                 "    <ol type=\"1\">\n" +
                 "        <li>이사회는 이사 출석으로 성립하고 출석인원 과반수의 찬성으로 의결한다.</li>\n" +
                 "        <li>총회는 출석회원으로 개최하고 출석회원 과반수로 의결한다. 단, 우편 또는 FAX로 위임장을 제출한 경우에도 출석으로 간주한다.</li>\n" +
@@ -104,7 +114,7 @@ const constitution = {
                 "    </ol>"
         }
         , {
-            "idx": 4,
+            "idx": 6,
             "content": "<h2 style=\"text-align: center;\">제 4장&nbsp;&nbsp;재&nbsp;&nbsp;&nbsp;&nbsp;정</h2>\n" +
                 "    <h4>제 16 조 (회계년도) <span style=\"font-weight: normal;\">본회의 회계연도는 매년 12월1일부터 익년도 11월30일까지로 한다.</span></h4>\n" +
                 "    <h4>제 17 조 (재 정) <span style=\"font-weight: normal;\">본회의 재정은 다음과 같은 수입으로 충당한다.</span></h4>\n" +
@@ -123,7 +133,7 @@ const constitution = {
                 "    <h4>제 18 조 (회계보고) <span style=\"font-weight: normal;\">사무국장은 해당 년도 회계의 수지를 결산하여 감사의 감사를 거쳐 이사회에 보고한 다음 총회의 승인을 받아야 한다.</span></h4>\n" +
                 "    <h4>제 19 조 (경,조사지원) <span style=\"font-weight: normal;\">상기 제 17조(재정) 제 2,3항에 의거 임원분담금 및 특별찬조금을 납부한 임원 및 회원에 한해서 년 1회 경조사 발생시 화환(금)을 지원한다.</span></h4>\n"
         }, {
-            "idx": 5,
+            "idx": 7,
             "content": "<h2 style=\"text-align: center;\">부&nbsp;&nbsp;&nbsp;&nbsp;칙</h2>\n" +
                 "    <ol type=\"1\">\n" +
                 "        <li>본회의 시행을 위하여 필요한 사항은 이사회에서 정한다.</li>\n" +
