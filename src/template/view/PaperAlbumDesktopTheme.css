@@ -29,7 +29,7 @@ img {
 
 .book {
     display: flex;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 #aside {
