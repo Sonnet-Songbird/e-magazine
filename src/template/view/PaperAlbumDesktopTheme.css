@@ -29,7 +29,7 @@ img {
 
 .book {
     display: flex;
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
 #aside {
@@ -80,6 +80,7 @@ p {
     padding: 0.5rem 1rem;
     transform: rotateY(180deg);
     backface-visibility: hidden;
+    box-sizing: border-box;
     background-color: #fafafa;
     border: #282c34 solid 1px;
 }
