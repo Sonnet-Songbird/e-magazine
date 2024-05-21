@@ -2,9 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 body {
-    margin: 0;
+    margin: 1rem;
     padding: 0;
-    height: 100vh;
     display: flex;
     justify-content: center;
     font-family: 'Roboto', sans-serif;
@@ -30,16 +29,17 @@ img {
 
 .book {
     display: flex;
+    overflow: hidden;
 }
 
 #aside {
-    width: 400px;
-    height: 640px;
+    width: 480px;
+    height: 672px;
 }
 
 .flip-book {
-    width: 400px;
-    height: 640px;
+    width: 480px;
+    height: 672px;
     position: relative;
     perspective: 1500px;
 }
@@ -66,21 +66,22 @@ p {
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
+    padding: 0.5rem 1rem;
+    backface-visibility: hidden;
     background-color: #fafafa;
     box-sizing: border-box;
+    border: #282c34 solid 1px;
 }
 
 .back {
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 99;
+    padding: 0.5rem 1rem;
     transform: rotateY(180deg);
     backface-visibility: hidden;
+    background-color: #fafafa;
+    border: #282c34 solid 1px;
 }
 
 .next-btn {
