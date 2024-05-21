@@ -291,7 +291,7 @@ const testImg = {
             "keyword": ""
         }
     ],
-    "defaultTheme": "앨범 탬플릿"
+    "defaultTheme": "앨범 템플릿"
 }
 
 export default testImg
