@@ -20,7 +20,6 @@ export class contentFetcher {
             if (!jsonData["defaultTheme"]) {
                 return;
             }
-            console.log(themeRepo("앨범 템플릿"));
             this.setTheme(themeRepo()[jsonData["defaultTheme"]]);
 
         } catch (error) {
@@ -40,20 +39,27 @@ export class contentFetcher {
 }
 
 const ContentType = {
-
     // ENUM
     IMG: {
-        tag: "Img",
+        tag: "Img", //One Page Image
+        //@Component:GlassMagnifier
         handle(content) {
         }
     }
     , ALBUM: {
-        tag: "Album",
+        tag: "Album",//Image Array
+        //@Component:[GlassMagnifier]
         handle(content) {
         }
     }
-    , HTML: {
+    , HTML: { //Static Paging HTML
         tag: "Html",
+        //@Component:div
+        handle(content) {
+        }
+    }, DYNAMIC: { //Dynamic Paging HTML
+        tag: "Html/D",
+        //@Component:[div]
         handle(content) {
         }
     }
@@ -65,7 +71,7 @@ const ContentType = {
                 return this[key];
             }
         }
-        return null;
+        throw new Error(`No such tag`);
     }
     , popTag(content) {
         const tagPattern = /^#(\w+);/;
