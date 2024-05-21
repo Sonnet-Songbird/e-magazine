@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Content from "./Content";
 import themeRepo from "../repository/themeRepo";
-import contentFetcher from "../class/ContentFetcher";
-import EditToolbox from "./EditToolbox";
+import {contentFetcher} from "../model/ContentModel";
+// import EditToolbox from "./EditToolbox";
 import PageFinder from "./util/PageFinder";
 
 const Viewer = () => {
@@ -97,7 +97,7 @@ const Viewer = () => {
             <label htmlFor="templateselect">template</label>
             {viewContents.length > 0 &&
                 <ThemeComponent contents={viewContents} functions={viewFunctions.current} utils={viewUtils} />}
-            {editable && <EditToolbox />}
+            {/*{editable && <EditToolbox />}*/}
         </div>
     );
 };
