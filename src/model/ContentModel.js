@@ -1,32 +1,38 @@
 import React from "react";
 import themeRepo from "../repository/themeRepo";
-import MagnifiedImg from "./MagnifiedImg";
 import {GlassMagnifier} from "@niklasmaki/react-image-magnifiers";
 
 import {ContextURL} from "../config";
 
 
-export const contentFetcher = {
-    fetchPages(setPages, setTheme) {
+
+export class contentFetcher {
+    constructor(setPages, setTheme, jsonName) {
+        this.setPages = setPages;
+        this.setTheme = setTheme;
+        this.jsonName = jsonName;
+    }
+
+    fetchPages() {
         try {
             const jsonData = this.fetchPageData();
             const pages = jsonData["pages"];
-            setPages(pages);
+            this.setPages(pages);
             if (!jsonData["defaultTheme"]) {
                 return;
             }
-            setTheme(themeRepo()[jsonData["defaultTheme"]]);
+            this.setTheme(themeRepo()[jsonData["defaultTheme"]]);
 
         } catch (error) {
             console.error('Failed to fetch page data:', error);
             return false;
         }
         return true;
-    },
+    }
 
     fetchPageData() {
         try {
-            return require(`../repository/pages/${this.fileName}.json`);
+            return require(`../repository/pages/${this.jsonName}.json`);
         } catch (error) {
             throw new Error('Failed to fetch page data');
         }
