@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Content from "./Content";
 import themeRepo from "../repository/themeRepo";
-import {contentFetcher} from "../model/ContentModel";
 // import EditToolbox from "./EditToolbox";
 import PageFinder from "./util/PageFinder";
+import {ContentModel} from "../model/ContentModel";
 
 const Viewer = () => {
     const [editable, setEditable] = useState(false);
@@ -60,8 +60,8 @@ const Viewer = () => {
     };
 
     const initloadPages = () => {
-        const pagePatcher = new contentFetcher(setPages, setTheme);
-        return pagePatcher.fetchPages();
+        const contentModel = new ContentModel(setPages, setTheme);
+        return contentModel.fetchPages();
     }
 
     useEffect(() => {

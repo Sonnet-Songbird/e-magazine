@@ -2,6 +2,8 @@ import {ContextURL} from "../config";
 import {GlassMagnifier} from "@niklasmaki/react-image-magnifiers";
 import React from "react";
 
+
+//Todo: Not tested
 export function ImageContent({folderName, fileName, idx, alt}) {
     const src = `${ContextURL.ROOT}/${folderName}/${fileName}`;
     const altText = alt || (idx !== undefined ? `${idx}번 이미지` : fileName);
@@ -19,6 +21,7 @@ export function ImageContent({folderName, fileName, idx, alt}) {
     );
 };
 
+//Todo: Not tested
 export function AlbumContent(folderName, count, ext, startIdx = 1) {
     return Array.from({length: count}, (_, i) => {
         const fileName = `${startIdx + i}.${ext}`;
