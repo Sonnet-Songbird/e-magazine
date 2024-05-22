@@ -9,7 +9,7 @@ const Viewer = () => {
     const [editable, setEditable] = useState(false);
     const [theme, setTheme] = useState();
     const [themeOptions, setThemeOptions] = useState([]);
-    const [showingidx, setShowingidx] = useState(0);
+    const [showingIdx, setShowingIdx] = useState(0);
     const [pagePerView, setPagePerView] = useState(0);
     const [pages, setPages] = useState([]);
     const [viewContents, setViewContents] = useState([]);
@@ -29,9 +29,16 @@ const Viewer = () => {
         initThemeOption();
     }, []);
 
+
+    useEffect(() => {
+        viewFunctions["setTheme"] = setTheme;
+        viewFunctions["setPages"] = setPages;
+        viewFunctions["setShowingIdx"] = setShowingIdx;
+    }, []);
+
+    //추후 의존성 이동 필요
     useEffect(() => {
         const newUtils = { ...viewUtils };
-        console.log(viewFunctions.current["goTo"])
         newUtils["PageFinder"] = <PageFinder pages={pages} viewFunctions={viewFunctions.current} />;
         setViewUtils(newUtils);
     }, [pages, viewFunctions]);
@@ -66,14 +73,14 @@ const Viewer = () => {
     useEffect(() => {
         if (pagePerView && pages.length > 0) {
             const tmpContents = [];
-            for (let i = showingidx; i < pagePerView && i < pages.length; i++) {
+            for (let i = showingIdx; i < pagePerView && i < pages.length; i++) {
                 tmpContents.push(<Content key={i} editable={editable} page={pages[i]} />);
             }
             setViewContents(tmpContents);
         } else {
             setViewContents([]);
         }
-    }, [showingidx, pagePerView, pages, editable]);
+    }, [showingIdx, pagePerView, pages, editable]);
 
     const ThemeComponent = (props) => {
         if (!theme) {
