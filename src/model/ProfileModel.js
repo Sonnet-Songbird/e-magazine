@@ -26,7 +26,7 @@ export class DirectoryModel {
     }
 }
 
-export class ProfileModel {
+class ProfileModel {
     //@arg: contact: [string], note: [string], keyword[string]
     constructor(belong, name, contact, note, keyword) {
         this.belong = belong ? belong : "";
