@@ -36,7 +36,7 @@ const Viewer = () => {
         viewFunctions["setShowingIdx"] = setShowingIdx;
     }, []);
 
-    //추후 의존성 이동 필요
+    //TODO: 추후 의존성 이동 필요
     useEffect(() => {
         const newUtils = { ...viewUtils };
         newUtils["PageFinder"] = <PageFinder pages={pages} viewFunctions={viewFunctions.current} />;
