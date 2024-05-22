@@ -1,11 +1,22 @@
-//TODO:Not tested
-import {useEffect, useState} from "react";
+import {useEffect, useReducer, useState} from "react";
 import {Modal} from "react-bootstrap";
+import "./Profile.css"
+import Button from "react-bootstrap/Button";
 
 export function Profile({model, functions}) {
     const [show, setShow] = useState(false);
+
     const modalClose = () => setShow(false);
     const modalShow = () => setShow(true);
+    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+
+
+
+    const mockAddMemo = (model) => {
+        const str = prompt("추가 할 내용을 입력 해 주세요.")
+        model.note.push(str)
+        forceUpdate()
+    }
 
     useEffect(() => {
         functions["modalShow"] = setShow
@@ -13,7 +24,10 @@ export function Profile({model, functions}) {
 
     return (
         <Modal show={show} onHide={modalClose}>
-            <div className="profile-container">
+            <Modal.Header closeButton>
+                <Modal.Title>{`${model.belong} ${model.name}`}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
                 <table>
                     <thead>
                         <tr>
@@ -44,7 +58,18 @@ export function Profile({model, functions}) {
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={modalClose}>
+                    닫기
+                </Button>
+                <Button variant="primary" onClick={() => mockAddMemo(model)}>
+                    메모 남기기
+                </Button>
+            </Modal.Footer>
         </Modal>
-    );
+
+
+    )
+        ;
 }
