@@ -5,7 +5,6 @@ import constitution from "../repository/pages/constitution";
 import {ContextURL} from "../config";
 
 
-
 export class contentFetcher {
     constructor(setPages, setTheme) {
         this.setPages = setPages;
@@ -38,113 +37,6 @@ export class contentFetcher {
     }
 }
 
-const ContentType = {
-    // ENUM
-    IMG: {
-        tag: "Img", //One Page Image
-        //@Component:GlassMagnifier
-        handle(content) {
-        }
-    }
-    , ALBUM: {
-        tag: "Album",//Image Array
-        //@Component:[GlassMagnifier]
-        handle(content) {
-        }
-    }
-    , HTML: { //Static Paging HTML
-        tag: "Html",
-        //@Component:div
-        handle(content) {
-        }
-    }, DYNAMIC: { //Dynamic Paging HTML
-        tag: "Html/D",
-        //@Component:[div]
-        handle(content) {
-        }
-    }
-
-    // Function
-    , getByTag(tag) {
-        for (let key in this) {
-            if (this[key].tag === tag) {
-                return this[key];
-            }
-        }
-        throw new Error(`No such tag`);
-    }
-    , popTag(content) {
-        const tagPattern = /^#(\w+);/;
-        if (content[0] !== "#") {
-            throw new Error(`Content must start with content type tag `);
-        }
-        const match = content.match(tagPattern);
-        if (match) {
-            const handler = this.getByTag(match[1]);
-            return {
-                handler: handler,
-                content: content.replace(tagPattern, '')
-            };
-        }
-        return {
-            handler: null,
-            content: content
-        };
-    }
-    , putTag(type, content) {
-        const typeTag = type.toUpperCase();
-        if (this.tags[typeTag]) {
-            return `#${this.tags[typeTag].tag};${content}`;
-        } else {
-            throw new Error(`Invalid Type: "${typeTag}"not found in ContentType.`);
-        }
-    }
-    , handleContent(content) {
-        const {handler, content: strippedContent} = this.popTag(content);
-
-        if (!handler) {
-            console.error("Invalid content format or unknown content type.");
-            return;
-        }
-
-        handler.handle(strippedContent);
-    }
-};
-
-
-class ImageContent {
-    constructor(folderName, fileName, idx, alt = `${idx}번 이미지`) {
-        this.folderName = folderName;
-        this.fileName = fileName;
-        this.idx = idx;
-        this.alt = alt;
-        this.src = `${ContextURL.ROOT}/${this.folderName}/${this.fileName}`
-    }
-
-    render() {
-        return (
-            <GlassMagnifier
-                className="magnifiedImg"
-                imageSrc={this.src}
-                allowOverflow="false"
-                magnifierOffsetX="0"
-                magnifierOffsetY="0"
-                square="true"
-            />
-        );
-    }
-
-
-    //파일명은 1에서부터 유효 숫자만
-    // @return [Component]
-    static albumContent(folderName, count, ext, startIdx) {
-        const album = []
-        for (let i = 0; i < count; i++) {
-            album.push(new ImageContent(folderName, `${count + 1}.${ext}`, startIdx + i).render())
-        }
-        return album
-    }
-}
 
 
 export class ContentModel {
