@@ -1,23 +1,26 @@
 //@Component: profile, contact(list)
+import Directory from "../repository/Profile/directory";
 export class DirectoryModel {
     constructor() {
         this.profile = this.fetchProfiles()
+        console.log("this.profile", this.profile)
     }
 
     fetchProfiles() {
         let directory = []
         try {
-            const directoryRepo = directory.profiles
-            directoryRepo.forEach((item) => {
-                const i = item.profile
+            const directoryRepo = Directory.profiles
+            const arr = Array.from(Object.values(directoryRepo));
+            arr.forEach((item) => {
+                const i = item.profile;
                 directory.push(new ProfileModel(
-                    i.belong
-                    , i.name
-                    , i.contact
-                    , i.keyword
-                    , i.note
-                ))
-            })
+                    i.belong,
+                    i.name,
+                    i.contact,
+                    i.keyword,
+                    i.note
+                ));
+            });
 
         } catch (error) {
             console.error('Failed to fetch profile data:', error);
