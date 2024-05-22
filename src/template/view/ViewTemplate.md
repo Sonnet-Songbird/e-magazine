@@ -7,28 +7,34 @@
   - 테마 변경
   - @arg: idx(number)
   - @return: void
-  - @Component: Viewer
+  - @component: Viewer
   
   ### ["setPages"] 
   - 컨텐츠 변경
   - @arg: idx(number)
   - @return: void
-  - @Component: Viewer
+  - @component: Viewer
+  
+  ### ["modalShow"] 
+  - 단일 모달 출력 여부 변경
+  - @arg: isShow(boolean)
+  - @return: void
+  - @component: Profile
   
   ### ["setShowingIdx"] 
   - 컨텐츠의 시작 인덱스를 변경
   - @arg: idx(number)
   - @return: void
-  - @Component: Viewer
+  - @component: Viewer
 
   ### ["goTo"] 
   - 인덱스를 통한 이동
   - @arg: idx(number)
   - @return: void
-  - @Component: util/PageFinder
+  - @component: util/PageFinder
     
   ### ["goToWithKey"] 
   - 문자열을 통한 이동
   - @arg: key(string)
   - @return: void
-  - @Component: 
+  - @component: 
