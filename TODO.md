@@ -9,6 +9,7 @@
 ### 추상화
     - 레이지 로딩 기능을 포함한 이미지 로더
     - 가변 길이 테마 
+    - 하위 컴포넌트 생성을 View.js가 아닌 별도의 클로저 스크립트로 정의하여 의존성 분리 
 
 ### 사양
     - 이미지 마그니파이어 ( 적용하려면 이미지 로딩하는 방식 자체를 바꿔야할듯?) Glass Magnifier, 클릭하면 돋보기 배율 변경 https://adamrisberg.github.io/react-image-magnifiers/ 2번
