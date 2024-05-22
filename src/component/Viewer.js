@@ -47,7 +47,7 @@ const Viewer = () => {
         if (theme) {
             const themePagePerView = theme["pagePerView"];
             setPagePerView(themePagePerView);
-            document.querySelector('#templateselect').options[theme.idx].selected = true;
+            document.querySelector('#templateSelect').options[theme.idx].selected = true;
         }
     }, [theme]);
 
@@ -98,10 +98,10 @@ const Viewer = () => {
         <div>
             <input type="checkbox" name="editable" id="editchkbox" onChange={handleCheckboxChange} />
             <label htmlFor="editchkbox">Editable</label>
-            <select id='templateselect' onChange={handleSelectTheme}>
+            <select id="templateSelect" onChange={handleSelectTheme}>
                 {themeOptions}
             </select>
-            <label htmlFor="templateselect">template</label>
+            <label htmlFor="templateSelect">template</label>
             {viewContents.length > 0 &&
                 <ThemeComponent contents={viewContents} functions={viewFunctions.current} utils={viewUtils} />}
             {/*{editable && <EditToolbox />}*/}
