@@ -5,8 +5,7 @@ export class ContentModel {
     constructor(setPages, setTheme) {
         this.setPages = setPages;
         this.setTheme = setTheme;
-        this.child = [];
-        this.datasets = [];
+        this.elements = [];
     }
 
     fetchPages() {
