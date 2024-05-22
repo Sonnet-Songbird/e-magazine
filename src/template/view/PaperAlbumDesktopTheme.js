@@ -81,6 +81,7 @@ const PaperAlbumDesktopTheme = ({contents, functions, utils}) => {
             {renderCheckboxes()}
             <div id="aside">
                 {contents[0]}
+                {utils[["profile"]]}
             </div>
             <div className="flip-book">
                 {renderPages()}

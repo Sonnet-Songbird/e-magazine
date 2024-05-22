@@ -1,9 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Content from "./Content";
 import themeRepo from "../repository/themeRepo";
-// import EditToolbox from "./EditToolbox";
 import PageFinder from "./util/PageFinder";
 import {ContentModel} from "../model/ContentModel";
+import {DirectoryModel} from "../model/ProfileModel";
+import {Profile} from "./Profile";
+import Button from "react-bootstrap/Button";
+
 
 const Viewer = () => {
     const [editable, setEditable] = useState(false);
@@ -12,6 +15,7 @@ const Viewer = () => {
     const [showingIdx, setShowingIdx] = useState(0);
     const [pagePerView, setPagePerView] = useState(0);
     const [pages, setPages] = useState([]);
+    const [profiles, setProfiles] = useState([]);
     const [viewContents, setViewContents] = useState([]);
     const [viewUtils, setViewUtils] = useState({});
     const viewFunctions = useRef({});
@@ -38,10 +42,11 @@ const Viewer = () => {
 
     //TODO: 추후 의존성 이동 필요
     useEffect(() => {
-        const newUtils = { ...viewUtils };
-        newUtils["PageFinder"] = <PageFinder pages={pages} viewFunctions={viewFunctions.current} />;
+        const newUtils = {...viewUtils};
+        newUtils["PageFinder"] = <PageFinder pages={pages} viewFunctions={viewFunctions.current}/>;
+        newUtils["profile"] = <Profile functions={viewFunctions} model={profiles[0]}/>
         setViewUtils(newUtils);
-    }, [pages, viewFunctions]);
+    }, [pages, viewFunctions, profiles]);
 
     useEffect(() => {
         if (theme) {
@@ -59,22 +64,26 @@ const Viewer = () => {
         setTheme(themeRepo()[e.target.value]);
     };
 
-    const initloadPages = () => {
+    const initLoadPages = () => {
         const contentModel = new ContentModel(setPages, setTheme);
         return contentModel.fetchPages();
     }
+    const initLoadProfile = () => {
+        setProfiles(new DirectoryModel().profile);
+    }
 
     useEffect(() => {
-        if (!initloadPages()) {
+        if (!initLoadPages()) {
             alert("가져올 페이지가 없습니다.");
         }
+        initLoadProfile();
     }, []);
 
     useEffect(() => {
         if (pagePerView && pages.length > 0) {
             const tmpContents = [];
             for (let i = showingIdx; i < pagePerView && i < pages.length; i++) {
-                tmpContents.push(<Content key={i} editable={editable} page={pages[i]} />);
+                tmpContents.push(<Content key={i} editable={editable} page={pages[i]}/>);
             }
             setViewContents(tmpContents);
         } else {
@@ -96,14 +105,17 @@ const Viewer = () => {
 
     return (
         <div>
-            <input type="checkbox" name="editable" id="editchkbox" onChange={handleCheckboxChange} />
+            <input type="checkbox" name="editable" id="editchkbox" onChange={handleCheckboxChange}/>
             <label htmlFor="editchkbox">Editable</label>
             <select id="templateSelect" onChange={handleSelectTheme}>
                 {themeOptions}
             </select>
             <label htmlFor="templateSelect">template</label>
+            <Button variant="primary" onClick={() => viewFunctions["modalShow"](true)}>
+                프로필 보기
+            </Button>
             {viewContents.length > 0 &&
-                <ThemeComponent contents={viewContents} functions={viewFunctions.current} utils={viewUtils} />}
+                <ThemeComponent contents={viewContents} functions={viewFunctions.current} utils={viewUtils}/>}
             {/*{editable && <EditToolbox />}*/}
         </div>
     );
