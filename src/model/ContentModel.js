@@ -1,23 +1,20 @@
 import themeRepo from "../repository/themeRepo";
-import constitution from "../repository/pages/constitution";
-import testImg from "../repository/pages/testImg";
+import contentRepo from "../repository/ContentRepo";
 
 export class ContentModel {
-    constructor(setPages, setTheme) {
-        this.setPages = setPages;
+    constructor(setContent, setTheme) {
+        this.setContent = setContent;
         this.setTheme = setTheme;
-        this.elements = [];
     }
 
-    fetchPages() {
+    fetchPages(contentKey) {
         try {
-            const jsonData = testImg;
+            const jsonData = contentRepo(contentKey);
             const pages = jsonData["pages"];
-            this.setPages(pages);
-            if (!jsonData["defaultTheme"]) {
-                return;
+            this.setContent(pages);
+            if (jsonData["defaultTheme"]) {
+                this.setTheme(themeRepo()[jsonData["defaultTheme"]]);
             }
-            this.setTheme(themeRepo()[jsonData["defaultTheme"]]);
         } catch (error) {
             console.error('Failed to fetch page data:', error);
             return false;

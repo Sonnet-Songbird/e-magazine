@@ -1,7 +1,7 @@
 import testImg from "./pages/testImg";
 import testText from "./pages/testText";
 import constitution from "./pages/constitution";
-const contentRepo = () => {
+const contentRepo = (key) => {
     const repository = {};
 
     function add(name, data) {
@@ -11,7 +11,7 @@ const contentRepo = () => {
     add("41기 앨범", testImg );
     add("해동고 동창회 회칙", constitution );
     add("테스트 텍스트", testText);
-    return repository;
+    return repository[key];
 };
 
 export default contentRepo;
