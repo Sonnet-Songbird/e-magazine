@@ -1,3 +1,5 @@
+import React from "react";
+import {ImageContent} from "./ContentElement";
 
 const ContentType = {
     // ENUM
@@ -8,15 +10,26 @@ const ContentType = {
         }
     }
     , ALBUM: {
-        tag: "Album",//Image Array
-        //@Component:[GlassMagnifier]
-        handle(content) {
+        tag: "Album"//Image Array
+        //@Component:[ImageContent]
+        ,handle(content) {
+            return (
+                <ImageContent />
+            )
+        }
+        ,serialize(){
+
         }
     }
     , HTML: { //Static Paging HTML
         tag: "Html",
         //@Component:div
         handle(content) {
+            return (
+                <div className="content-html"
+                     dangerouslySetInnerHTML={{__html: content}}>
+                </div>
+            )
         }
     }, DYNAMIC: { //Dynamic Paging HTML
         tag: "Html/D",
@@ -36,9 +49,6 @@ const ContentType = {
     }
     , popTag(content) {
         const tagPattern = /^#(\w+);/;
-        if (content[0] !== "#") {
-            throw new Error(`Content must start with content type tag `);
-        }
         const match = content.match(tagPattern);
         if (match) {
             const handler = this.getByTag(match[1]);
@@ -48,9 +58,9 @@ const ContentType = {
             };
         }
         return {
-            handler: null,
-            content: content
-        };
+            handler: this.HTML.handler,
+            content: content,
+        }
     }
     , putTag(type, content) {
         const typeTag = type.toUpperCase();

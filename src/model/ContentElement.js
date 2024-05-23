@@ -9,6 +9,7 @@ export function ImageContent({folderName, fileName, idx, alt}) {
 
     return (
         <GlassMagnifier
+            key={fileName}
             className="magnifiedImg"
             imageSrc={src}
             alt={altText}
@@ -27,10 +28,9 @@ export function AlbumContent(folderName, count, ext, startIdx = 1) {
         const fileName = `${startIdx + i}.${ext}`;
         return (
             <ImageContent
-                key={i}
                 folderName={folderName}
-                fileName={fileName}
                 idx={startIdx + i}
+                fileName={fileName}
             />
         );
     });
