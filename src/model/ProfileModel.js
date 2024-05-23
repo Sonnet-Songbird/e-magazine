@@ -3,7 +3,6 @@ import Directory from "../repository/Profile/directory";
 export class DirectoryModel {
     constructor() {
         this.profile = this.fetchProfiles()
-        console.log("this.profile", this.profile)
     }
 
     fetchProfiles() {
