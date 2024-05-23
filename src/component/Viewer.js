@@ -6,6 +6,7 @@ import {ContentModel} from "../model/ContentModel";
 import {DirectoryModel} from "../model/ProfileModel";
 import {Profile} from "./Profile";
 import Button from "react-bootstrap/Button";
+import {Directory} from "./Directory";
 
 
 const Viewer = () => {
@@ -15,7 +16,7 @@ const Viewer = () => {
     const [showingIdx, setShowingIdx] = useState(0);
     const [pagePerView, setPagePerView] = useState(0);
     const [pages, setPages] = useState([]);
-    const [profiles, setProfiles] = useState([]);
+    const [directory, setDirectory] = useState(new DirectoryModel());
     const [viewContents, setViewContents] = useState([]);
     const [viewUtils, setViewUtils] = useState({});
     const viewFunctions = useRef({});
@@ -44,9 +45,10 @@ const Viewer = () => {
     useEffect(() => {
         const newUtils = {...viewUtils};
         newUtils["PageFinder"] = <PageFinder pages={pages} viewFunctions={viewFunctions.current}/>;
-        newUtils["profile"] = <Profile functions={viewFunctions} model={profiles[0]}/>
+        newUtils["Profile"] = <Profile functions={viewFunctions} model={directory.profile[0]}/>
+        newUtils["Directory"] = <Directory functions={viewFunctions} model={directory}/>
         setViewUtils(newUtils);
-    }, [pages, viewFunctions, profiles]);
+    }, [pages, viewFunctions, directory]);
 
     useEffect(() => {
         if (theme) {
@@ -68,15 +70,11 @@ const Viewer = () => {
         const contentModel = new ContentModel(setPages, setTheme);
         return contentModel.fetchPages();
     }
-    const initLoadProfile = () => {
-        setProfiles(new DirectoryModel().profile);
-    }
 
     useEffect(() => {
         if (!initLoadPages()) {
             alert("가져올 페이지가 없습니다.");
         }
-        initLoadProfile();
     }, []);
 
     useEffect(() => {
