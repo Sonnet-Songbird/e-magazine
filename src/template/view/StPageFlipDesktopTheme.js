@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import HTMLFlipBook from "react-pageflip";
-import './StPageFlipDesktopTheme.scss';
+import './StPageFlipDesktopTheme.css';
 
 
 const PageCover = React.forwardRef((props, ref) => {
@@ -19,8 +19,8 @@ const Page = React.forwardRef((props, ref) => {
             <div className="page-content">
                 {/*<h2 className="page-header">Page header - {props.number}</h2>*/}
                 {/*<div className="page-image"></div>*/}
-                <div className="page-text">{props.children}</div>
-                {/*<div className="page-footer">{props.number + 1}</div>*/}
+                <div className="page-image">{props.children}</div>
+                <div className="page-footer">{props.number + 1}</div>
             </div>
         </div>
     );
@@ -73,24 +73,23 @@ const StPageFlipDesktopTheme = ({contents, functions, utils}) => {
     };
 
     return (
-        <div>
+        <div style={{overflow: "hidden"}}>
             <HTMLFlipBook
                 width={550}
                 height={733}
-                size="stretch"
                 minWidth={315}
                 maxWidth={1000}
-                minHeight={400}
-                maxHeight={1533}
+                minHeight={420}
+                maxHeight={1350}
                 maxShadowOpacity={0.5}
                 showCover={true}
                 mobileScrollSupport={true}
                 onFlip={onPage}
-                className="flip-book"
+                className="flip-book relative bg-primary-100 pointer-events-auto border"
                 ref={flipBookRef}
-            >
+                autoSize>
                 <PageCover>{contents[0]}</PageCover>
-                {/*{pageList(contents, 1, 1)}*/}
+                {pageList(contents, 1, 3)}
                 <PageCover>{contents[contents.length - 1]}</PageCover>
             </HTMLFlipBook>
 
