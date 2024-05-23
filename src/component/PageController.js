@@ -10,7 +10,7 @@ function PageController({ current, total, prevClickFnc, nextClickFnc, prevText =
     return (
         <div>
             <Button variant="primary" onClick={prevClickFnc}>{prevText}</Button>{' '}
-            <ProgressBar now={progress} />
+            <ProgressBar now={progress} animated label={`${current} / ${total}`} />
             <Button variant="primary" onClick={nextClickFnc}>{nextText}</Button>{' '}
         </div>
     );
