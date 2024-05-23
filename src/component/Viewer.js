@@ -7,6 +7,8 @@ import {DirectoryModel} from "../model/ProfileModel";
 import {Profile} from "./Profile";
 import Button from "react-bootstrap/Button";
 import {Directory} from "./Directory";
+import TabbedComponent from "./TabbedComponent";
+import constitutionComp from "../repository/pages/constitutionComp";
 
 
 const Viewer = () => {
@@ -46,7 +48,11 @@ const Viewer = () => {
         const newUtils = {...viewUtils};
         newUtils["PageFinder"] = <PageFinder pages={pages} viewFunctions={viewFunctions.current}/>;
         newUtils["Profile"] = <Profile functions={viewFunctions} model={directory.profile[0]}/>
-        newUtils["Directory"] = <Directory functions={viewFunctions} model={directory}/>
+        // newUtils["Directory"] = <Directory functions={viewFunctions} model={directory}/>
+        newUtils["Tabbed"] = <TabbedComponent functions={viewFunctions} model={directory}>
+            <Directory functions={viewFunctions} model={directory} title={"연락처"}/>
+            <Content page={constitutionComp} title={"회칙"}/>
+        </TabbedComponent>
         setViewUtils(newUtils);
     }, [pages, viewFunctions, directory]);
 

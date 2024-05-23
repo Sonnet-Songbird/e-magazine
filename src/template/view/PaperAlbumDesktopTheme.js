@@ -1,9 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import './PaperAlbumDesktopTheme.css';
+import PageController from "../../component/PageController";
 
 const PaperAlbumDesktopTheme = ({contents, functions, utils}) => {
 
     const [selectedChkbox, goTo] = useState(0)
+
+    function movePage(number) {
+        const target = selectedChkbox + number + 1
+        if (target <= contents.length) {
+            goTo(target)
+        }
+        console.log(target)
+    }
+
+
     useEffect(() => {
         const pageCount = Math.ceil(contents.length);
         if (selectedChkbox < 0) {
@@ -77,15 +88,27 @@ const PaperAlbumDesktopTheme = ({contents, functions, utils}) => {
         functions["goTo"] = goTo;
     }, [functions]);
     return (
+        <div>
         <div className="book">
             {renderCheckboxes()}
             <div id="aside">
-                {utils["Directory"]}
-                {utils["Profile"]}
+                {utils["Tabbed"]}
             </div>
             <div className="flip-book">
                 {renderPages()}
             </div>
+        </div>
+            <PageController current={selectedChkbox} total={contents.length} nextText={"다음"}
+                            nextClickFnc={() => {
+                                movePage(1)
+                            }}
+                            prevClickFnc={() => {
+                                movePage(-1)
+                            }}
+                            resetClickFnc={() => {
+                                goTo(0)
+                            }}
+                            prevText={"이전"}/>
             <div>{utils["PageFinder"] !== undefined && utils["PageFinder"]}
             </div>
         </div>

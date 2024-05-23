@@ -1,5 +1,6 @@
 import themeRepo from "../repository/themeRepo";
 import constitution from "../repository/pages/constitution";
+import testImg from "../repository/pages/testImg";
 
 export class ContentModel {
     constructor(setPages, setTheme) {
@@ -10,7 +11,7 @@ export class ContentModel {
 
     fetchPages() {
         try {
-            const jsonData = constitution;
+            const jsonData = testImg;
             const pages = jsonData["pages"];
             this.setPages(pages);
             if (!jsonData["defaultTheme"]) {
