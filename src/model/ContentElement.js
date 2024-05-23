@@ -3,7 +3,6 @@ import {GlassMagnifier} from "@niklasmaki/react-image-magnifiers";
 import React from "react";
 
 
-//Todo: Not tested
 export function ImageContent({folderName, fileName, idx, alt}) {
     const src = `${ContextURL.ROOT}/${folderName}/${fileName}`;
     const altText = alt || (idx !== undefined ? `${idx}번 이미지` : fileName);
@@ -14,6 +13,7 @@ export function ImageContent({folderName, fileName, idx, alt}) {
             imageSrc={src}
             alt={altText}
             allowOverflow={false}
+            magnifierSize={50}
             magnifierOffsetX={0}
             magnifierOffsetY={0}
             square={true}
