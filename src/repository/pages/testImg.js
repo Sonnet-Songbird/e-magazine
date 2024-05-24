@@ -289,6 +289,26 @@ const testImg = {
             "idx": 57,
             "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/57.jpg\" alt=\"57번째 이미지\">",
             "keyword": ""
+        },
+        {
+            "idx": 58,
+            "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/58.jpg\" alt=\"58번째 이미지\">",
+            "keyword": ""
+        },
+        {
+            "idx": 59,
+            "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/59.jpg\" alt=\"59번째 이미지\">",
+            "keyword": ""
+        },
+        {
+            "idx": 60,
+            "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/60.jpg\" alt=\"60번째 이미지\">",
+            "keyword": ""
+        },
+        {
+            "idx": 61,
+            "content": "<img src=\"https://sonnet-songbird.github.io/e-magazine/album/61.jpg\" alt=\"61번째 이미지\">",
+            "keyword": ""
         }
     ],
     "defaultTheme": "앨범 템플릿"
