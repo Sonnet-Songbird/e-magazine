@@ -7,11 +7,10 @@ const PaperAlbumDesktopTheme = ({contents, functions, utils}) => {
     const [selectedChkbox, goTo] = useState(0)
 
     function movePage(number) {
-        const target = selectedChkbox + number + 1
+        const target = selectedChkbox + number *2
         if (target <= contents.length) {
             goTo(target)
         }
-        console.log(target)
     }
 
 
