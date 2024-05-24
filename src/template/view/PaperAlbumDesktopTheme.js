@@ -7,7 +7,7 @@ const PaperAlbumDesktopTheme = ({contents, functions, utils}) => {
     const [selectedChkbox, goTo] = useState(0)
 
     function movePage(number) {
-        const target = selectedChkbox + number *2
+        const target = (selectedChkbox + number * 2) & ~1;
         if (target <= contents.length) {
             goTo(target)
         }
@@ -88,16 +88,16 @@ const PaperAlbumDesktopTheme = ({contents, functions, utils}) => {
     }, [functions]);
     return (
         <div>
-        <div className="book">
-            {renderCheckboxes()}
-            <div id="aside">
-                {utils["Tabbed"]}
+            <div className="book">
+                {renderCheckboxes()}
+                <div id="aside">
+                    {utils["Tabbed"]}
+                </div>
+                <div className="flip-book">
+                    {renderPages()}
+                </div>
             </div>
-            <div className="flip-book">
-                {renderPages()}
-            </div>
-        </div>
-            <PageController current={selectedChkbox} total={contents.length} nextText={"다음"}
+            <PageController current={selectedChkbox} total={(contents.length) & ~1} nextText={"다음"}
                             nextClickFnc={() => {
                                 movePage(1)
                             }}
