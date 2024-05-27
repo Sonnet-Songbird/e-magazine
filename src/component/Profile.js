@@ -1,15 +1,12 @@
-import {useEffect, useReducer, useState} from "react";
+import {useReducer} from "react";
 import {Modal} from "react-bootstrap";
 import "./Profile.css"
 import Button from "react-bootstrap/Button";
 
-export function Profile({model, functions}) {
-    const [show, setShow] = useState(false);
+export function Profile({model, show, setShow}) {
 
     const modalClose = () => setShow(false);
-    const modalShow = () => setShow(true);
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
-
 
 
     const mockAddMemo = (model) => {
@@ -17,10 +14,6 @@ export function Profile({model, functions}) {
         model.note.push(str)
         forceUpdate()
     }
-
-    useEffect(() => {
-        functions["modalShow"] = setShow
-    }, [functions]);
 
     return (
         <Modal show={show} onHide={modalClose}>
