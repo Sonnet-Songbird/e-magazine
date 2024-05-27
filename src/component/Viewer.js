@@ -2,13 +2,13 @@ import React, {useEffect, useRef, useState} from 'react';
 import Content from "./Content";
 import themeRepo from "../repository/themeRepo";
 import PageFinder from "./util/PageFinder";
-import {ContentModel} from "../model/ContentModel";
 import {DirectoryModel} from "../model/ProfileModel";
 import {Profile} from "./Profile";
 import Button from "react-bootstrap/Button";
 import {Directory} from "./Directory";
 import TabbedComponent from "./TabbedComponent";
 import constitutionComp from "../repository/pages/constitutionComp";
+import testImg from "../repository/pages/testImg";
 
 
 const Viewer = () => {
@@ -73,8 +73,18 @@ const Viewer = () => {
     };
 
     const initLoadPages = () => {
-        const contentModel = new ContentModel(setPages, setTheme);
-        return contentModel.fetchPages();
+        try {
+            const jsonData = testImg;
+            const pages = jsonData["pages"];
+            setPages(pages);
+            if (jsonData["defaultTheme"]) {
+                setTheme(themeRepo()[jsonData["defaultTheme"]]);
+            }
+        } catch (error) {
+            console.error('Failed to fetch page data:', error);
+            return false;
+        }
+        return true;
     }
 
     useEffect(() => {
