@@ -9,13 +9,25 @@ export function ImageContent(folderName, fileName, idx, alt) {
     const altText = alt || (idx !== undefined ? `${idx}번 이미지` : fileName);
 
     return (
+        // <Magnifier
+        //     key={fileName}
+        //     className={"magnifiedImg"}
+        //     imageSrc={src}
+        //     imageAlt={altText}
+        // />
+        // <img
+        //     key={fileName}
+        //     className={"image"}
+        //     alt={altText}
+        //     src={src}
+        // />
         <GlassMagnifier
             key={fileName}
             className="magnifiedImg"
             imageSrc={src}
             alt={altText}
             allowOverflow={false}
-            magnifierSize={50}
+            magnifierSize={300}
             magnifierOffsetX={0}
             magnifierOffsetY={0}
             square={true}
