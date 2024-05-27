@@ -1,11 +1,11 @@
 // import './App.css';
-import Viewer from "./component/Viewer";
+import ViewModel from "./component/ViewModel";
 
 function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <Viewer/>
+                    <ViewModel/>
             </header>
         </div>
     );
