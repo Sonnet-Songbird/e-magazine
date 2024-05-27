@@ -1,9 +1,9 @@
 //TODO:Not tested
 
 import React, {Children, useState} from 'react';
-import { Tab, Tabs } from 'react-bootstrap';
+import {Tab, Tabs} from 'react-bootstrap';
 
-const TabbedComponent = ({ children }) => {
+const TabbedComponent = ({children}) => {
     const [activeTab, setActiveTab] = useState(0);
 
     const handleTabSelect = (selectedTab) => {

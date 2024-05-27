@@ -1,6 +1,6 @@
-import {PaginationComp} from "./PaginationComp";
+import {PaginationComp} from "../PaginationComp";
 
-export function Directory({functions, model}) {
+export function Directory({model}) {
     const header = (
         <tr>
             <th>소속</th>
