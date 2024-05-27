@@ -1,24 +1,44 @@
-import themeRepo from "../repository/themeRepo";
 import contentRepo from "../repository/ContentRepo";
+import themeRepo from "../repository/themeRepo";
+import testImg from "../repository/pages/testImg";
 
 export class ContentModel {
-    constructor(setContent, setTheme) {
-        this.setContent = setContent;
-        this.setTheme = setTheme;
+    constructor() {
+        this.contents = [] // component
     }
 
-    fetchPages(contentKey) {
-        try {
-            const jsonData = contentRepo(contentKey);
-            const pages = jsonData["pages"];
-            this.setContent(pages);
-            if (jsonData["defaultTheme"]) {
-                this.setTheme(themeRepo()[jsonData["defaultTheme"]]);
-            }
-        } catch (error) {
-            console.error('Failed to fetch page data:', error);
-            return false;
+    /*
+    * @arg: ContentModel
+    * */
+    concat(target, isTargetAfter = true) {
+        let copy = JSON.parse(JSON.stringify(this));
+
+        if (isTargetAfter) {
+            copy.contents = copy.contents.concat(target.contents);
+        } else {
+            copy.contents = target.contents.concat(copy.contents);
         }
-        return true;
+
+        return copy;
+    }
+
+
+    stringfy() {
+        return JSON.stringify(this);
+    }
+
+    static parse(string) {
+        return JSON.parse(string);
+    }
+
+    //@arg: Component || [Components]
+    add(component) {
+        if (Array.isArray(component)) {
+            component.forEach(component => {
+                this.contents.push(component);
+            });
+        } else {
+            this.contents.push(component);
+        }
     }
 }
