@@ -18,17 +18,13 @@ export default function ViewModel() {
         if (!contentModel) {
             return null
         }
-        const component = contentModel.theme;
-        if (component) {
-            return component(props);
-        } else {
-            return null;
-        }
+        const component = contentModel.getTheme();
+        return component ? component(props) : null;
     };
 
     return (
         <div style={{border: "1px solid cyan"}}>
-            <ThemeComponent contentModel={contentModel} content={[]}/>
+            <ThemeComponent contentModel={contentModel}/>
         </div>
     );
 }
