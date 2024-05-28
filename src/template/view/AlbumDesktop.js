@@ -1,6 +1,10 @@
 import './AlbumDesktop.css';
 import React, {useEffect, useState} from "react";
-import PageController from "../../component/PageController";
+import PageController from "../../component/fragment/PageController";
+import TabbedComponent from "../../component/fragment/TabbedComponent";
+import {Directory} from "../../component/fragment/Directory";
+import {DirectoryModel} from "../../model/ProfileModel";
+import PageFinder from "../../component/fragment/PageFinder";
 
 const AlbumDesktop = ({contentModel}) => {
     const [selectedChkbox, goTo] = useState(0)
@@ -63,7 +67,7 @@ const AlbumDesktop = ({contentModel}) => {
 
     const renderPages = () => {
         const pageCount = Math.ceil(length() / 2);
-        return Array.from({ length: pageCount }, (_, idx) => {
+        return Array.from({length: pageCount}, (_, idx) => {
             const frontIndex = idx * 2;  // 0, 2, 4, ...
             const backIndex = frontIndex + 1;  // 1, 3, 5, ...
             const frontContent = contents()[frontIndex];
@@ -95,7 +99,10 @@ const AlbumDesktop = ({contentModel}) => {
             <div className="book">
                 {renderCheckboxes()}
                 <div id="aside">
-                    {/*{utils["Tabbed"]}*/}
+                    <TabbedComponent>
+                        <Directory model={new DirectoryModel()} title={"연락처"}/>
+                        <PageFinder model={contentModel.index["search"]} title={"검색"}/>
+                    </TabbedComponent>
                 </div>
                 <div className="flip-book">
                     {renderPages()}
@@ -112,8 +119,6 @@ const AlbumDesktop = ({contentModel}) => {
                                 goTo(0)
                             }}
                             prevText={"이전"}/>
-            {/*<div>{utils["PageFinder"] !== undefined && utils["PageFinder"]}*/}
-            {/*</div>*/}
         </div>
     );
 };
