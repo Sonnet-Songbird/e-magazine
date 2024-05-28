@@ -12,4 +12,4 @@ modelTestText.add(HtmlContent("<p>안녕하세요, 여러분!</p>\n<p>오늘은 
 export const modelTestAlbum = new ContentModel()
 modelTestAlbum.add(new AlbumContent("album", "61", "jpg"))
 modelTestAlbum.theme = AlbumDesktop;
-modelTestAlbum.mobileTheme = StPageFlipDesktopTheme
+// modelTestAlbum.mobileTheme = StPageFlipDesktopTheme
