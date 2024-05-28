@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 import HTMLFlipBook from "react-pageflip";
 import './StPageFlipDesktopTheme.css';
 
@@ -19,18 +19,23 @@ const Page = React.forwardRef((props, ref) => {
             <div className="page-content">
                 {/*<h2 className="page-header">Page header - {props.number}</h2>*/}
                 {/*<div className="page-image"></div>*/}
-                <div className="page-image">{props.children}</div>
+                {/*<div className="page-image"></div>*/}
+                {props.children}
                 <div className="page-footer">{props.number + 1}</div>
             </div>
         </div>
     );
 });
 
-const StPageFlipDesktopTheme = ({contents, functions, utils}) => {
+const StPageFlipDesktopTheme = ({contentModel}) => {
     const [page, setPage] = useState(0);
-    const [totalPage, setTotalPage] = useState(0);
     const flipBookRef = useRef(null);
-
+    const contents = () => {
+        return contentModel.contents
+    }
+    const length = () => {
+        return contentModel.contents.length
+    }
     const nextButtonClick = () => {
         flipBookRef.current.pageFlip().flipNext();
     };
@@ -48,29 +53,21 @@ const StPageFlipDesktopTheme = ({contents, functions, utils}) => {
         console.log("flip onto", number)
     }
 
-    const pageList = (contents, startFrom, endBefore) => {
-        return contents.slice(startFrom, contents.length - endBefore).map((content, index) => {
-            return <Page key={index} number={index + startFrom}>{content}</Page>;
+    const pageList = () => {
+        if (!contents()) {
+            return [];
+        }
+        return contents().map((content, index) => {
+            if (index === 0 || index === length()) {
+                return <PageCover content={content} key={index}/>;
+            }
+            return <Page key={index} number={index}>{content}</Page>;
         });
     };
 
-    useEffect(() => {
-        functions["goTo"] = flip
-    }, [functions]);
-
-    useEffect(function updatePageCount() {
-        const interval = setInterval(() => {
-            if (flipBookRef.current && flipBookRef.current.pageFlip()) {
-                setTotalPage(flipBookRef.current.pageFlip().getPageCount());
-                clearInterval(interval);
-            }
-        }, 100);
-        return () => clearInterval(interval);
-    }, [flipBookRef]);
-
-    const totalcount = () => {
-        console.log(pageList(contents, 1, 1));
-    };
+    // useEffect(() => {
+    //     functions["goTo"] = flip
+    // }, [functions]);
 
     return (
         <div style={{overflow: "hidden"}}>
@@ -88,9 +85,7 @@ const StPageFlipDesktopTheme = ({contents, functions, utils}) => {
                 className="flip-book relative bg-primary-100 pointer-events-auto border"
                 ref={flipBookRef}
                 autoSize>
-                <PageCover>{contents[0]}</PageCover>
-                {pageList(contents, 1, 3)}
-                <PageCover>{contents[contents.length - 1]}</PageCover>
+                {pageList()}
             </HTMLFlipBook>
 
             <div className="container">
@@ -98,13 +93,10 @@ const StPageFlipDesktopTheme = ({contents, functions, utils}) => {
                     <button type="button" onClick={prevButtonClick}>
                         Previous page
                     </button>
-                    [<span>{page + 1}</span> of <span>{totalPage}</span>]
+                    [<span>{page + 1}</span> of <span>{length()}</span>]
                     <button type="button" onClick={nextButtonClick}>
                         Next page
                     </button>
-                    <button type="button" onClick={totalcount}>Total count</button>
-                    <div>{utils["PageFinder"] !== undefined && utils["PageFinder"]}
-                    </div>
                 </div>
             </div>
         </div>
