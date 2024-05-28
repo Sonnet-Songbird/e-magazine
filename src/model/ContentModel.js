@@ -55,12 +55,17 @@ export class ContentModel {
     }
 
     find(idxName, keyword) {
-        this.index[idxName].find(keyword);
+        const find = this.index[idxName].find
+        if (!find) {
+            return [];
+        }
+        return find(keyword);
     }
 
     //@arg: key: keyword || [keywords]
     addIndex(name, number, key) {
         const model = this.index[name] || (this.index[name] = new IndexModel());
+        model.keyIndex[number] = key;
     }
 
     linkIndex(indexModel) {
@@ -75,20 +80,20 @@ class IndexModel {
     }
 
     find(keyword) {
+        console.log(this.keyIndex);
         keyword = keyword.toLowerCase();
         const results = [];
-        for (const key in this.keyIndex) {
-            if (this._isIncludes(key, keyword)) {
-                this.keyIndex[key].forEach(number => {
-                    results.push({number, keyword: key});
-                });
+        for (const [number, value] of Object.entries(this.keyIndex)) {
+            if (this._isIncludes(value, keyword)) {
+                results.push({number, keyword: value});
             }
         }
+        console.log(results);
         return results;
     }
 
-    _isIncludes(key, keyword) {
-        return key.includes(keyword);
+    _isIncludes(value, keyword) {
+        return value.toLowerCase().includes(keyword);
     }
 
 

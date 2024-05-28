@@ -22,7 +22,6 @@ const AlbumDesktop = ({contentModel}) => {
         }
     }
 
-
     useEffect(() => {
         const pageCount = Math.ceil(length());
         if (selectedChkbox < 0) {
@@ -101,7 +100,7 @@ const AlbumDesktop = ({contentModel}) => {
                 <div id="aside">
                     <TabbedComponent>
                         <Directory model={new DirectoryModel()} title={"연락처"}/>
-                        <PageFinder model={contentModel.index["search"]} title={"검색"}/>
+                        <PageFinder indexModel={contentModel.index["search"]} title={"검색"} goToFnc={goTo}/>
                     </TabbedComponent>
                 </div>
                 <div className="flip-book">

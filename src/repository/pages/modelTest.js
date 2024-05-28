@@ -13,3 +13,6 @@ export const modelTestAlbum = new ContentModel()
 modelTestAlbum.add(new AlbumContent("album", "61", "jpg"))
 modelTestAlbum.theme = AlbumDesktop;
 // modelTestAlbum.mobileTheme = StPageFlipDesktopTheme
+
+modelTestAlbum.addIndex("search", 38, "김재희")
+modelTestAlbum.addIndex("search", 36, "김재희")
