@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.App-header {
+    padding: 1vw;
+    border: none;
+}
+
+.btn {
+    width: 100%;
+    margin-bottom: 1vw;
+}
+
+.pages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image {
+    height: inherit;
+    width: auto;
+}
+
+.offcanvas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+}
+
+.offcanvas-body {
+    padding: 0.5%;
+}
+
+.table {
+    font-size: 1em;
+}
+
+.table thead th {
+    padding: 0.5vw;
+}
+
+.table tbody td {
+    padding: 0.5vw;
+}
+
+#pageFinder {
+    width: 100%;
+}
+
+#pageFinder input {
+    width: 100%;
+    padding: 0.5vw;
+    margin-bottom: 1vw;
+    box-sizing: border-box;
+}
+
+#pageFinder button {
+    width: 100%;
+    padding: 0.5vw;
+}
+
+#pageFinder table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1vw;
+}
+
+#pageFinder th, #pageFinder td {
+    border: 0.1vw solid #ccc;
+    padding: 0.5vw;
+}
+.button-progress-container{
+    padding-top: 1%;
+}
+.album-mobile {
+    width: 90vw;
+    height: 98vh;
+    box-sizing: border-box;
+}
+.item{
+    max-height: 80vh;
+}
+
+.tabbed-component {
+    margin-top: 2%;
+}
+
+.carousel {
+    max-height: 90%
+}
+
+.page-controller {
+    margin-top: 2%;
+}

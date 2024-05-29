@@ -1,7 +1,7 @@
 import {ContentModel} from "../../model/ContentModel";
 import {AlbumContent, HtmlContent} from "../../model/ContentElement";
 import AlbumDesktop from "../../template/view/AlbumDesktop";
-import StPageFlipDesktopTheme from "../../template/view/StPageFlipDesktopTheme";
+import AlbumMobile from "../../template/view/AlbumMobile";
 
 export const modelTestText = new ContentModel()
 
@@ -12,7 +12,7 @@ modelTestText.add(HtmlContent("<p>안녕하세요, 여러분!</p>\n<p>오늘은 
 export const modelTestAlbum = new ContentModel()
 modelTestAlbum.add(new AlbumContent("album", "61", "jpg"))
 modelTestAlbum.theme = AlbumDesktop;
-// modelTestAlbum.mobileTheme = StPageFlipDesktopTheme
+modelTestAlbum.mobileTheme = AlbumMobile;
 
 modelTestAlbum.addIndex("search", 38, "김재희")
 modelTestAlbum.addIndex("search", 36, "김재희")
