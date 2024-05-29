@@ -22,6 +22,7 @@ const AlbumDesktop = ({contentModel}) => {
     function movePage(number) {
         const target = (active + number) % length();
         const adjustedTarget = target < 0 ? length() + target : target;
+        console.log("adjusted", adjustedTarget)
         goTo(adjustedTarget);
     }
 
@@ -57,7 +58,7 @@ const AlbumDesktop = ({contentModel}) => {
             <CarouselComp active={active} goToFunc={goTo}>
                 {renderPages()}
             </CarouselComp>
-            <PageController current={active} total={(length()) & ~1} nextText={"다음"}
+            <PageController className={"fixed-bottom"} current={active} total={(length()) & ~1} nextText={"다음"}
                             nextClickFnc={() => {
                                 movePage(1)
                             }}

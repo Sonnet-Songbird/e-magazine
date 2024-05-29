@@ -85,21 +85,15 @@ code {
     padding-top: 1%;
 }
 .album-mobile {
-    width: 90vw;
-    height: 98vh;
     box-sizing: border-box;
 }
-.item{
-    max-height: 80vh;
+img{
+    width: 100%;
 }
-
 .tabbed-component {
     margin-top: 2%;
 }
 
-.carousel {
-    max-height: 90%
-}
 
 .page-controller {
     margin-top: 2%;

@@ -1,6 +1,7 @@
 import {ContextURL} from "../config";
 import {GlassMagnifier} from "@niklasmaki/react-image-magnifiers";
 import React from "react";
+import {isMobile} from "react-device-detect";
 
 //컨텐츠 탬플릿
 
@@ -8,19 +9,15 @@ export function ImageContent(folderName, fileName, idx, alt) {
     const src = `${ContextURL.ROOT}/${folderName}/${fileName}`;
     const altText = alt || (idx !== undefined ? `${idx}번 이미지` : fileName);
 
+    if (isMobile) {
+        return (<img
+            key={fileName}
+            className={"Img"}
+            alt={altText}
+            src={src}
+        />)
+    }
     return (
-        // <Magnifier
-        //     key={fileName}
-        //     className={"magnifiedImg"}
-        //     imageSrc={src}
-        //     imageAlt={altText}
-        // />
-        // <img
-        //     key={fileName}
-        //     className={"image"}
-        //     alt={altText}
-        //     src={src}
-        // />
         <GlassMagnifier
             key={fileName}
             className="magnifiedImg"
@@ -33,7 +30,7 @@ export function ImageContent(folderName, fileName, idx, alt) {
             square={true}
         />
     );
-};
+}
 
 //Todo: Not tested
 export function AlbumContent(folderName, count, ext, startIdx = 1) {
