@@ -1,4 +1,3 @@
-import './AlbumDesktop.css';
 import React, {useEffect, useState} from "react";
 import PageController from "../../component/fragment/PageController";
 import TabbedComponent from "../../component/fragment/TabbedComponent";
@@ -21,6 +20,10 @@ const AlbumDesktop = ({contentModel}) => {
             goTo(target)
         }
     }
+
+    useEffect(() => {
+        import ('./AlbumDesktop.css')
+    }, []);
 
     useEffect(() => {
         const pageCount = Math.ceil(length());
@@ -94,11 +97,11 @@ const AlbumDesktop = ({contentModel}) => {
     };
 
     return (
-        <div>
+        <div className={"album-desktop"}>
             <div className="book">
                 {renderCheckboxes()}
                 <div id="aside">
-                    <TabbedComponent>
+                    <TabbedComponent >
                         <Directory model={new DirectoryModel()} title={"연락처"}/>
                         <PageFinder indexModel={contentModel.index["search"]} title={"검색"} goToFnc={goTo}/>
                     </TabbedComponent>
