@@ -55,7 +55,7 @@ export default function ViewModel() {
     };
 
     return (
-        <div style={{ border: "1px solid cyan" }}>
+        <div >
             <ThemeComponent contentModel={contentModel} />
         </div>
     );

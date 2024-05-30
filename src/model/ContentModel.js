@@ -77,12 +77,21 @@ export class ContentModel {
     linkIndex(indexModel) {
         this.index.push(indexModel)
     }
+
+    setIsInclude(name, bool) {
+        if (this.index[name]) {
+            this.index[name].isInclude = bool;
+            return;
+        }
+        console.error(`${name}에 해당하는 인덱스가 없습니다.`);
+    }
 }
 
 
 class IndexModel {
     constructor() {
         this.keyIndex = {};
+        this.isInclude = true;
     }
 
     find(keyword) {
@@ -90,7 +99,7 @@ class IndexModel {
         const results = [];
         for (const [key, values] of Object.entries(this.keyIndex)) {
             for (const value of values) {
-                if (this._isIncludes(value, keyword)) {
+                if (this._isHit(value, keyword)) {
                     results.push({idx: key, keyword: value});
                 }
             }
@@ -98,8 +107,12 @@ class IndexModel {
         return results;
     }
 
-    _isIncludes(value, keyword) {
-        return value.toLowerCase().includes(keyword);
+    _isHit(value, keyword) {
+        if (this.isInclude) {
+            return value.toLowerCase().includes(keyword);
+        } else {
+            return value.toLowerCase() === keyword.toLowerCase();
+        }
     }
 
 //@arg: number, key || [key]

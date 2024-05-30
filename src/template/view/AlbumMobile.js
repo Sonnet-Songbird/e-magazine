@@ -4,7 +4,6 @@ import {Directory} from "../../component/fragment/Directory";
 import {DirectoryModel} from "../../model/ProfileModel";
 import PageFinder from "../../component/fragment/PageFinder";
 import OffCanvasExample from "../../component/fragment/MobileOffcanvas";
-import TabbedComponent from "../../component/fragment/TabbedComponent";
 import CarouselComp from "../../component/fragment/CarouselComp";
 import PageController from "../../component/fragment/PageController";
 
@@ -38,30 +37,26 @@ const AlbumMobile = ({contentModel}) => {
             </div>
         ));
     };
-
     return (
         <div className={"album-mobile"}>
-            <OffCanvasExample name={" "}>
-                <TabbedComponent>
+
+            <div className={"mobile-header"}>
+                <OffCanvasExample name={""}>
                     <Directory model={new DirectoryModel()} title={"연락처"}/>
-                    <PageFinder indexModel={contentModel.index["search"]} title={"검색"} goToFnc={goTo}/>
-                </TabbedComponent>
-            </OffCanvasExample>
+                </OffCanvasExample>
+                <PageFinder indexModel={contentModel.index["pageSearch"]} title={"검색"} goToFnc={goTo} matchAndGo={true}
+                            showHeader={false}/>
+            </div>
             <CarouselComp active={active} goToFunc={goTo}>
                 {renderPages()}
             </CarouselComp>
-            <PageController className={"fixed-bottom"} current={active} total={(length()) & ~1} nextText={"다음"}
+            <PageController className={"fixed-bottom"} current={active} total={(length()) & ~1}
                             goToFnc={goTo}
-                            nextClickFnc={() => {
-                                movePage(1)
-                            }}
-                            prevClickFnc={() => {
-                                movePage(-1)
-                            }}
+                            resetText={"처음으로"}
                             resetClickFnc={() => {
                                 goTo(0)
                             }}
-                            prevText={"이전"}/>
+            />
         </div>
     );
 };

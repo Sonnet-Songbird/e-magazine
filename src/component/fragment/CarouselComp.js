@@ -1,9 +1,12 @@
 import Carousel from 'react-bootstrap/Carousel';
-import {Children} from "react";
+import {Children, useEffect} from "react";
 
 // @arg items: [component]
 function CarouselComp({children, active, goToFunc, interval = null}) {
 
+    useEffect(() => {
+        console.log(active)
+    }, [active]);
     const renderItems = () => {
         return Children.map(children, (child, idx) => (
             <Carousel.Item key={idx}>

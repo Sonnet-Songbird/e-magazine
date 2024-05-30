@@ -32,9 +32,10 @@ const indexData = {
 
 export const album41Model = new ContentModel()
 album41Model.add(new AlbumContent(FOLDER_NAME, IMAGE_COUNT, IMAGE_EXT))
-album41Model.addIndexData("search", indexData)
+album41Model.addIndexData("pageSearch", indexData)
 album41Model.theme = AlbumDesktop;
 album41Model.mobileTheme = AlbumMobile;
+album41Model.setIsInclude("pageSearch", false);
 
 // const dataArray = data.split('\n').filter(line => line.trim() !== '');
 // const classData = {};
