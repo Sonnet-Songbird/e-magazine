@@ -68,5 +68,5 @@ export function HtmlDynamicContent(innerHtml) {
 
 
 const whitePage = (idx) => {
-    return ImageContent("pics", "whitePages.jpg", idx, `White Page`)
+    return ImageContent("pics", "whitePage.jpg", idx, `White Page`)
 }
