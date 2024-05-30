@@ -68,6 +68,12 @@ export class ContentModel {
         model.keyIndex[number] = key;
     }
 
+    //@arg: name: string, data: obj{number: [keyword]}
+    addIndexData(name, data) {
+        const model = this.index[name] || (this.index[name] = new IndexModel());
+        model.addDataObj(data)
+    }
+
     linkIndex(indexModel) {
         this.index.push(indexModel)
     }
@@ -80,15 +86,15 @@ class IndexModel {
     }
 
     find(keyword) {
-        console.log(this.keyIndex);
         keyword = keyword.toLowerCase();
         const results = [];
-        for (const [number, value] of Object.entries(this.keyIndex)) {
-            if (this._isIncludes(value, keyword)) {
-                results.push({number, keyword: value});
+        for (const [key, values] of Object.entries(this.keyIndex)) {
+            for (const value of values) {
+                if (this._isIncludes(value, keyword)) {
+                    results.push({idx: key, keyword: value});
+                }
             }
         }
-        console.log(results);
         return results;
     }
 
@@ -112,14 +118,13 @@ class IndexModel {
     }
 
     addKeyword(number, keyword) {
-        if (this.keyIndex[keyword]) {
-            this.keyIndex[keyword].push(number);
+        if (this.keyIndex[number]) {
+            this.keyIndex[number].push(keyword);
         } else {
-            this.keyIndex[keyword] = [number];
+            this.keyIndex[number] = [keyword];
         }
     }
 
-    //@arg: data: obj{number: [keyword]}
     addDataObj(data) {
         Object.keys(data).forEach(number => {
             data[number].forEach(name => {

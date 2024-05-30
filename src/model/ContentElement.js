@@ -33,15 +33,28 @@ export function ImageContent(folderName, fileName, idx, alt) {
 }
 
 //Todo: Not tested
-export function AlbumContent(folderName, count, ext, startIdx = 1) {
-    return Array.from({length: count}, (_, i) => {
+export function AlbumContent(folderName, count, ext, startIdx = 1, withCover = true) {
+    const images = [];
+
+    if (withCover) {
+        images.push(ImageContent(folderName, "fCover.jpg", images.length, `${folderName}/fCover.jpg`));
+        images.push(whitePage(images.length));
+    }
+
+    for (let i = 0; i < count; i++) {
         const fileName = `${startIdx + i}.${ext}`;
-        const alt = `${folderName}/${fileName}`;
-        return (
-            ImageContent(folderName, fileName, startIdx + i, alt)
-        );
-    });
-};
+        images.push(ImageContent(folderName, fileName, images.length, `${folderName}/${fileName}`));
+    }
+
+    if (withCover) {
+        if (count % 2 === 1) {
+            images.push(whitePage(images.length))
+        }
+        images.push(ImageContent(folderName, "bCover.jpg", startIdx + count + 1, `${folderName}/bCover.jpg`));
+    }
+    return images;
+}
+
 
 export function HtmlContent(innerHtml) {
     return (<div className="content-html"
@@ -51,4 +64,9 @@ export function HtmlContent(innerHtml) {
 
 export function HtmlDynamicContent(innerHtml) {
     //pagenation까지 포함한 하나의 컴포넌트로 만들던가, height를 입력하면 컴포넌트 배열을 돌려주는 html을 가진 객체로 만들던가
+}
+
+
+const whitePage = (idx) => {
+    return ImageContent("pics", "whitePages.jpg", idx, `White Page`)
 }
