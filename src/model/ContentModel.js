@@ -96,11 +96,11 @@ class IndexModel {
         return value.toLowerCase().includes(keyword);
     }
 
-
-    //overloading facade
+//@arg: number, key || [key]
     add(number, key) {
         if (Array.isArray(key)) {
             this.addKeyWords(number, key)
+            return;
         }
         this.addKeyword(number, key)
     }
@@ -119,6 +119,13 @@ class IndexModel {
         }
     }
 
-
+    //@arg: data: obj{number: [keyword]}
+    addDataObj(data) {
+        Object.keys(data).forEach(number => {
+            data[number].forEach(name => {
+                this.addKeyword(number, name);
+            });
+        });
+    }
 }
 
