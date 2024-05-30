@@ -6,7 +6,7 @@ import {isMobile} from "react-device-detect";
 //컨텐츠 탬플릿
 
 export function ImageContent(folderName, fileName, idx, alt) {
-    const src = `${ContextURL.ROOT}/${folderName}/${fileName}`;
+    const src = `${ContextURL.ROOT}${folderName}/${fileName}`;
     const altText = alt || (idx !== undefined ? `${idx}번 이미지` : fileName);
 
     if (isMobile) {
