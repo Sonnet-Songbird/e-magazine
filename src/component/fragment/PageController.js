@@ -4,7 +4,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
-function PageController({
+export default function PageController({
                             current,
                             total,
                             prevClickFnc,
@@ -25,4 +25,3 @@ function PageController({
     );
 }
 
-export default PageController;
