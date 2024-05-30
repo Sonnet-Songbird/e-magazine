@@ -1,15 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
 
 .App-header {
     padding: 1vw;
@@ -81,9 +71,7 @@ code {
     border: 0.1vw solid #ccc;
     padding: 0.5vw;
 }
-.button-progress-container{
-    padding-top: 1%;
-}
+
 .album-mobile {
     box-sizing: border-box;
 }

@@ -8,7 +8,7 @@ import TabbedComponent from "../../component/fragment/TabbedComponent";
 import CarouselComp from "../../component/fragment/CarouselComp";
 import PageController from "../../component/fragment/PageController";
 
-const AlbumDesktop = ({contentModel}) => {
+const AlbumMobile = ({contentModel}) => {
     const contents = () => {
         return contentModel.contents;
     };
@@ -22,7 +22,6 @@ const AlbumDesktop = ({contentModel}) => {
     function movePage(number) {
         const target = (active + number) % length();
         const adjustedTarget = target < 0 ? length() + target : target;
-        console.log("adjusted", adjustedTarget)
         goTo(adjustedTarget);
     }
 
@@ -31,13 +30,6 @@ const AlbumDesktop = ({contentModel}) => {
         import('./AlbumMobile.css');
     }, []);
 
-    useEffect(() => {
-        console.log("Active", active)
-    }, [active]);
-
-    useEffect(() => {
-        console.log(contents());
-    }, [contentModel]);
 
     const renderPages = () => {
         return contents().map((frontContent, idx) => (
@@ -49,7 +41,7 @@ const AlbumDesktop = ({contentModel}) => {
 
     return (
         <div className={"album-mobile"}>
-            <OffCanvasExample name={"menu"}>
+            <OffCanvasExample name={" "}>
                 <TabbedComponent>
                     <Directory model={new DirectoryModel()} title={"연락처"}/>
                     <PageFinder indexModel={contentModel.index["search"]} title={"검색"} goToFnc={goTo}/>
@@ -73,4 +65,4 @@ const AlbumDesktop = ({contentModel}) => {
     );
 };
 
-export default AlbumDesktop;
+export default AlbumMobile;
