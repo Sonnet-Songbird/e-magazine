@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useRef, useState} from 'react';
 
-const PageFinder = ({ indexModel, goToFnc }) => {
+const PageFinder = ({indexModel, goToFnc}) => {
     const [result, setResult] = useState([]);
     const inputRef = useRef();
 
@@ -15,7 +15,11 @@ const PageFinder = ({ indexModel, goToFnc }) => {
         setResult(indexModel.find(keyword));
     };
 
-    const ResultTable = ({ result, goToFnc }) => {
+    const ResultTable = ({result, goToFnc}) => {
+        const rowClickHandler = (idx) => {
+            if (typeof goToFnc == "function")
+                goToFnc(idx)
+        }
         return (
             <table style={{width: '100%', borderCollapse: 'collapse', marginTop: '16px'}}>
                 <thead>
@@ -27,14 +31,9 @@ const PageFinder = ({ indexModel, goToFnc }) => {
                 </thead>
                 <tbody>
                     {result.map((item, index) => (
-                        <tr key={index}>
+                        <tr key={index} onClick={() => rowClickHandler(item.idx)}>
                             <td style={{border: '1px solid #ccc', padding: '8px'}}>{item.keyword}</td>
-                            <td style={{border: '1px solid #ccc', padding: '8px'}}>{item.number}</td>
-                            {goToFnc && (
-                                <td style={{border: '1px solid #ccc', padding: '8px'}}>
-                                    <button onClick={() => goToFnc(item.number)}>바로가기</button>
-                                </td>
-                            )}
+                            <td style={{border: '1px solid #ccc', padding: '8px'}}>{item.idx}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -47,7 +46,7 @@ const PageFinder = ({ indexModel, goToFnc }) => {
         <div id="pageFinder">
             <input type="text" ref={inputRef}/>
             <button onClick={findPagesByKeyword}>검색</button>
-            <ResultTable result={result} goToFnc={goToFnc} />
+            <ResultTable result={result} goToFnc={goToFnc}/>
         </div>
     );
 };

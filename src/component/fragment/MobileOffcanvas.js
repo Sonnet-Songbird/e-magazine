@@ -2,7 +2,7 @@ import {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
-export default function OffCanvasExample({name, children, ...props}) {
+export default function OffCanvasExample({children, ...props}) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -11,7 +11,6 @@ export default function OffCanvasExample({name, children, ...props}) {
     return (
         <>
             <Button variant="primary" onClick={toggleShow} className="me-2, offcanvas-button">
-                {name}
             </Button>
             <Offcanvas show={show} onHide={handleClose} {...props}>
                 <Offcanvas.Header closeButton>

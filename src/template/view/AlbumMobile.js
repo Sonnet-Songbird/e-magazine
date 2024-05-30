@@ -51,6 +51,7 @@ const AlbumMobile = ({contentModel}) => {
                 {renderPages()}
             </CarouselComp>
             <PageController className={"fixed-bottom"} current={active} total={(length()) & ~1} nextText={"다음"}
+                            goToFnc={goTo}
                             nextClickFnc={() => {
                                 movePage(1)
                             }}

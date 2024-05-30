@@ -101,7 +101,7 @@ const AlbumDesktop = ({contentModel}) => {
             <div className="book">
                 {renderCheckboxes()}
                 <div id="aside">
-                    <TabbedComponent >
+                    <TabbedComponent>
                         <Directory model={new DirectoryModel()} title={"연락처"}/>
                         <PageFinder indexModel={contentModel.index["search"]} title={"검색"} goToFnc={goTo}/>
                     </TabbedComponent>
@@ -111,6 +111,7 @@ const AlbumDesktop = ({contentModel}) => {
                 </div>
             </div>
             <PageController current={selectedChkbox} total={(length()) & ~1} nextText={"다음"}
+                            goToFnc={goTo}
                             nextClickFnc={() => {
                                 movePage(1)
                             }}
