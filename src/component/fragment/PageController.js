@@ -40,9 +40,10 @@ export default function PageController({
     return (
         <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "2rem"}}
              className="page-controller-container p-3">
-            <div className={"form-page-count"}
+            <div className={"control-page-count"}
                  style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
                 <Form.Control
+                    className={"control-page-current control-page-input"}
                     type="number"
                     style={{border: "1px solid #4699EB", textAlign: "center", color: "#4699EB"}}
                     value={inputValue}
@@ -52,38 +53,36 @@ export default function PageController({
                     min={0}
                     max={total}
                 />
-                <Form.Label className="p-2 " style={{lineHeight: "100%", color: "#4699EB", marginBottom: "0"}}>
+                <Form.Label className="p-2 contol-page-slash">
                     &nbsp;/&nbsp;
                 </Form.Label>
                 <Form.Control
                     type="number"
-                    className="border-0"
+                    className="control-page-total control-page-input"
                     value={total}
-                    style={{
-                        backgroundColor: "transparent",
-                        border: "1px solid #4699EB",
-                        textAlign: "center",
-                        color: "#4699EB"
-                    }}
                     aria-label="total count"
                     disabled
                 />
             </div>
 
             {prevClickFnc || nextClickFnc || resetClickFnc ? (
-                <div className={"btn-container"} style={{display: "flex", justifyContent: "space-between", gap: "0.5rem"}}>
+                <div className={"btn-container"}
+                     style={{display: "flex", justifyContent: "space-between", gap: "0.5rem"}}>
                     {prevClickFnc && (
-                        <Button className="btn-prev rounded-pill" variant="outline-primary" onClick={prevClickFnc} style={{ border: '#4699EB solid 3px' }}>
+                        <Button className="btn-prev " variant="outline-primary" onClick={prevClickFnc}
+                                style={{border: '#4699EB solid 3px'}}>
                             {prevText}
                         </Button>
                     )}
                     {resetClickFnc && (
-                        <Button className="btn-reset rounded-pill" variant="outline-primary" onClick={resetClickFnc} style={{ border: '#4699EB solid 3px' }}>
+                        <Button className="btn-reset " variant="outline-primary" onClick={resetClickFnc}
+                                style={{border: '#4699EB solid 3px'}}>
                             {resetText}
                         </Button>
                     )}
                     {nextClickFnc && (
-                        <Button className="btn-next rounded-pill" variant="outline-primary" onClick={nextClickFnc} style={{ border: '#4699EB solid 3px' }}>
+                        <Button className="btn-next " variant="outline-primary" onClick={nextClickFnc}
+                                style={{border: '#4699EB solid 3px'}}>
                             {nextText}
                         </Button>
                     )}

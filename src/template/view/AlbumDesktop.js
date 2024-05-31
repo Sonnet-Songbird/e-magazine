@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import PageController from "../../component/fragment/PageController";
-import PageFinder from "../../component/fragment/PageFinder";
 import "./AlbumDesktop.css";
 
 const AlbumDesktop = ({contentModel}) => {
@@ -125,8 +124,6 @@ const AlbumDesktop = ({contentModel}) => {
                             alt="headong_mark.png"
                             src="https://sonnet-songbird.github.io/e-magazine/pics/haedong_mark.png"
                         />
-                        <PageFinder indexModel={contentModel.index["pageSearch"]} title={"검색"} goToFnc={goTo}
-                                    matchAndGo={true}/>
                     </div>
 
                 </div>
@@ -151,6 +148,7 @@ const AlbumDesktop = ({contentModel}) => {
                     prevClickFnc={() => {
                         movePage(-1);
                     }}
+                    resetText={"처음으로"}
                     resetClickFnc={() => {
                         goTo(0);
                     }}
