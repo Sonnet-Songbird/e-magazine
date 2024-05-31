@@ -134,7 +134,7 @@ const AlbumDesktop = ({contentModel}) => {
             <div className="reading-section">
                 <div className={"book"}>
                     {renderCheckboxes()}
-                    <div className={"book-aside book-side"}>1
+                    <div className={"book-aside book-side"}>
                     </div>
                     <div className={"flip-book book-side"}>
                         {renderPages()}
