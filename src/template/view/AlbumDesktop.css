@@ -58,14 +58,9 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.album-desktop #c1:checked ~ .book-aside {
+#c1:checked ~ .book-aside {
     width: 570px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.album-desktop .hidden {
-    width: 0;
-    overflow: hidden;
 }
 
 .album-desktop .flip {
