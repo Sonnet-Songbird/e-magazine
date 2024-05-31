@@ -22,6 +22,11 @@
     width: auto;
 }
 
+.mobile-header-icon-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
 .offcanvas-header {
     display: flex;
     justify-content: space-between;
@@ -33,13 +38,12 @@
     padding: 0.5%;
 }
 
+
 .searchbar {
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
     justify-content: center;
     margin-top: 1rem;
-    width: 80%;
 }
 
 .searchbar input {
@@ -76,7 +80,9 @@
 }
 
 #pageFinder {
-    width: 100%;
+    width: 80%;
+    margin-inline: auto;
+
 }
 
 #pageFinder input {
@@ -115,8 +121,13 @@
 .album-mobile {
     box-sizing: border-box;
 }
+.mark-headong{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0.25rem;
+}
 
-img {
+.item img {
     width: 100%;
 }
 

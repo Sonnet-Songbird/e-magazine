@@ -38,7 +38,7 @@ export default function PageController({
     };
 
     return (
-        <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem"}}
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "2rem"}}
              className="page-controller-container p-3">
             <div className={"form-page-count"}
                  style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>

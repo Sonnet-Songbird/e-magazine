@@ -1,8 +1,12 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './PageFinder.css';
-const PageFinder = ({indexModel, goToFnc, matchAndGo = false, showHeader = true}) => {
-    const [result, setResult] = useState([]);
+
+const PageFinder = ({indexModel, goToFnc, initialSearch = null, matchAndGo = false, showHeader = true}) => {
+    const [result, setResult] = useState(null);
     const inputRef = useRef();
+    useEffect(() => {
+
+    }, [result]);
 
     const findPagesByKeyword = () => {
         const keyword = inputRef.current.value;
@@ -14,11 +18,26 @@ const PageFinder = ({indexModel, goToFnc, matchAndGo = false, showHeader = true}
         }
         setResult(indexModel.find(keyword));
     };
+    useEffect(() => {
+        if ((result === null)) {
+            if (initialSearch) {
+                setResult(indexModel.find(initialSearch))
+            }
+            return;
+        }
+        if (result.length === 1 && matchAndGo) {
+            rowClickHandler(result[0].idx);
+        }
+    }, [result]);
 
+
+    const rowClickHandler = (idx) => {
+        if (typeof goToFnc == "function" && idx !== undefined)
+            goToFnc(Number.parseInt(idx))
+    }
     const ResultTable = ({result, goToFnc}) => {
-        const rowClickHandler = (idx) => {
-            if (typeof goToFnc == "function")
-                goToFnc(Number.parseInt(idx))
+        if (result === null) {
+            return null;
         }
         return (
             <table style={{width: '100%', borderCollapse: 'collapse', marginTop: '16px'}}>
@@ -27,17 +46,20 @@ const PageFinder = ({indexModel, goToFnc, matchAndGo = false, showHeader = true}
                         <tr>
                             <th style={{border: '0', padding: '8px'}}>키워드</th>
                             <th style={{border: '0', padding: '8px'}}>페이지 번호</th>
-                            {goToFnc && <th style={{border: '0', padding: '8px'}}></th>}
                         </tr>
                     </thead>
                 )}
 
                 <tbody>
+                    {result.length === 0 &&
+                        <div style={{textAlign: "center", padding: '0.5rem'}} className={"search-no-result"}>
+                            검색결과가 없습니다</div>
+                    }
                     {result.map((item, index) => (
                         <tr key={index} onClick={() => rowClickHandler(item.idx)} style={{cursor: 'pointer'}}
                             className="table-row">
-                            <td style={{border: '0', padding: '8px'}}>{item.keyword}</td>
-                            <td style={{border: '0', padding: '8px'}}>{item.idx}</td>
+                            <td style={{border: '0', padding: '0.5rem'}}>{item.keyword}</td>
+                            <td style={{border: '0', padding: '0.5rem'}}>{item.idx}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -63,7 +85,7 @@ const PageFinder = ({indexModel, goToFnc, matchAndGo = false, showHeader = true}
                         fill="#2867CE"/>
                 </svg>
             </div>
-            <ResultTable result={result} goToFnc={goToFnc}/>
+            {<ResultTable result={result} goToFnc={goToFnc}/>}
         </div>
     );
 };

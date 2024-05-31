@@ -41,9 +41,13 @@ const AlbumMobile = ({contentModel}) => {
         <div className={"album-mobile"}>
 
             <div className={"mobile-header"}>
+                <div className={"mobile-header-icon-wrapper"}>
+                <img className="mark-headong" alt="headong_mark.png"
+                     src="https://sonnet-songbird.github.io/e-magazine/pics/haedong_mark.png"/>
                 <OffCanvasExample name={""}>
                     <Directory model={new DirectoryModel()} title={"연락처"}/>
                 </OffCanvasExample>
+                </div>
                 <PageFinder indexModel={contentModel.index["pageSearch"]} title={"검색"} goToFnc={goTo} matchAndGo={true}
                             showHeader={false}/>
             </div>
