@@ -1,57 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-
-.App-header {
+.album-mobile {
     padding: 1vw;
     border: none;
 }
 
-.btn {
+.album-mobile .btn {
     width: 100%;
     margin-bottom: 1vw;
 }
 
-.pages {
+.album-mobile .pages {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.image {
+.album-mobile .image {
     height: inherit;
     width: auto;
 }
 
-.mobile-header-icon-wrapper{
+.album-mobile .mobile-header-icon-wrapper {
     display: flex;
     justify-content: space-between;
 }
 
-.offcanvas-header {
+.album-mobile .offcanvas-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1%;
 }
 
-.offcanvas-body {
+.album-mobile .offcanvas-body {
     padding: 0.5%;
 }
 
-
-.searchbar {
+.album-mobile .searchbar {
     display: flex;
     margin-inline: auto;
     justify-content: center;
     margin-top: 1rem;
 }
 
-.searchbar input {
+.album-mobile .searchbar input {
     border: 0;
     border-bottom: 3px solid #4699EB;
 }
 
-.searchbar svg {
+.album-mobile .btn-search {
     width: 2em;
     height: 2em;
     vertical-align: middle;
@@ -59,83 +57,79 @@
     overflow: hidden;
 }
 
-.btn-reset {
+.album-mobile .btn-reset {
     width: 50vw;
     border: #61dafb solid 1px;
 }
 
-.table {
+.album-mobile .table {
     font-size: 1em;
 }
 
-.table thead th {
+.album-mobile .table thead th {
     padding: 0.5vw;
 }
 
-.table tbody td {
+.album-mobile .table tbody td {
     padding: 0.5vw;
 }
-.form-page-count input{
+
+.album-mobile .form-page-count input {
     width: 4rem;
 }
 
-#pageFinder {
+.album-mobile #pageFinder {
     width: 80%;
     margin-inline: auto;
-
 }
 
-#pageFinder input {
+.album-mobile #pageFinder input {
     width: 100%;
     padding: 0.5vw;
     margin-bottom: 1vw;
     box-sizing: border-box;
 }
 
-#pageFinder button {
+.album-mobile #pageFinder button {
     width: 100%;
     padding: 0.5vw;
 }
 
-#pageFinder table {
+.album-mobile #pageFinder table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1vw;
 }
 
-#pageFinder th, #pageFinder td {
+.album-mobile #pageFinder th, .album-mobile #pageFinder td {
     border: 0.1vw solid #ccc;
     padding: 0.5vw;
 }
 
-.btn-offcanvas {
+.album-mobile .btn-offcanvas {
     width: 2rem;
     height: 1.5rem;
     margin: 0.25rem;
 }
 
-.offcanvas-header .btn-close {
+.album-mobile .offcanvas-header .btn-close {
     transform: translateX(-0.5rem);
 }
 
-.album-mobile {
-    box-sizing: border-box;
-}
-.mark-headong{
+.album-mobile .mark-headong {
     width: 1.5rem;
     height: 1.5rem;
     margin: 0.25rem;
 }
 
-.item img {
+.album-mobile .item img {
     width: 100%;
 }
 
-.tabbed-component {
+.album-mobile .tabbed-component {
     margin-top: 2%;
 }
 
-
-.page-controller {
+.album-mobile .page-controller {
     margin-top: 2%;
 }

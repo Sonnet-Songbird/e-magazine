@@ -71,7 +71,7 @@ export default function PageController({
             </div>
 
             {prevClickFnc || nextClickFnc || resetClickFnc ? (
-                <div style={{display: "flex", justifyContent: "space-between", gap: "0.5rem"}}>
+                <div className={"btn-container"} style={{display: "flex", justifyContent: "space-between", gap: "0.5rem"}}>
                     {prevClickFnc && (
                         <Button className="btn-prev rounded-pill" variant="outline-primary" onClick={prevClickFnc} style={{ border: '#4699EB solid 3px' }}>
                             {prevText}
