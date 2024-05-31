@@ -47,7 +47,7 @@ export function AlbumContent(folderName, count, ext, startIdx = 1, withCover = t
     }
 
     if (withCover) {
-        if (count % 2 === 1) {
+        if (count % 2 === 0) {
             images.push(whitePage(images.length))
         }
         images.push(ImageContent(folderName, "bCover.jpg", startIdx + count + 1, `${folderName}/bCover.jpg`));
