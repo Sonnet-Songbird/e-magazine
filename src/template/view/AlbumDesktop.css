@@ -1,4 +1,10 @@
-.btn {
+.album-desktop {
+    display: flex;
+    max-height: 1080px;
+}
+
+
+.album-desktop .btn {
     border: 3px solid #4699EB;
     border-radius: 36px;
     opacity: 1;
@@ -6,18 +12,35 @@
     height: 37px;
 }
 
-.btn:hover {
+.album-desktop .btn:hover {
     background: #4699EB 0% 0% no-repeat padding-box;
+}
+
+.album-desktop .btn-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .album-desktop .flipChkbox {
     display: none;
 }
 
+.album-desktop .reading-section {
+    padding-inline: 110px;
+    padding-block: 40px;
+}
+
 .album-desktop .aside-section {
     box-sizing: border-box;
-    border: 2px solid rgba(0, 0, 0, 0.2);
+    width: 494px;
+    min-width: 494px;
+    box-shadow: 0 3px 6px #00000029;
+    padding-left: 22px;
+    padding-right: 30px;
+    padding-top: 18px;
 }
+
 
 .album-desktop .pages {
     display: flex;
@@ -108,4 +131,103 @@
 .album-desktop .mark-headong {
     width: 54px;
     height: 54px;
+}
+
+.album-desktop .aside-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.album-desktop .aside-search-box {
+    height: 30px;
+    padding: 10px;
+    width: 300px;
+    border: 0;
+    border-bottom: #4699EB solid 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.album-desktop .aside-search-input {
+    border: 0;
+    text-decoration: none;
+    letter-spacing: 0;
+    font: normal normal normal 12px/14px Pretendard;
+
+
+}
+
+.album-desktop .aside-search-input:focus {
+    outline: none;
+}
+
+.album-desktop .aside-search-resultWrapper {
+    overflow: auto;
+    max-height: 970px;
+
+
+}
+
+
+
+.album-desktop .aside-search-input::placeholder {
+    color: #4699EB80;
+}
+
+.album-desktop .aside-search-btn {
+    width: 14px;
+    height: 14px;
+}
+.album-desktop * ::-webkit-scrollbar {
+    width: 3px;
+}
+
+.album-desktop *::-webkit-scrollbar-thumb {
+    background-color: #979797;
+    border-radius: 10px;
+    border: 2px solid transparent;
+}
+
+.album-desktop *::-webkit-scrollbar-track {
+    background-color: #DEDEDE;
+    border-radius: 10px;
+}
+.album-desktop .aside-search-body {
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+.album-desktop .aside-search-headerRow {
+    position: sticky;
+    background: #ffffff;
+    top: 22px;
+    z-index: 2;
+    box-shadow: 0 -20px 0 20px #ffffff;
+}
+
+.album-desktop .aside-search-headerRow th {
+    font: normal normal normal 12px/14px Pretendard;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.album-desktop .aside-search-result {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 1rem 22px;
+}
+
+.album-desktop .aside-search-noResult {
+    text-align: center;
+}
+
+.album-desktop .profile-tableBody-tr {
+    font: normal normal normal 14px/16px Pretendard;
+    padding-inline: 4px;
+    cursor: pointer;
+}
+.album-desktop .profile-tableBody-tr:active {
+    text-shadow: 0 0 10px #61dafb;
 }

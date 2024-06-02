@@ -18,19 +18,21 @@ export class DirectoryModel {
 
     static createMock() {
         const model = new DirectoryModel();
-        for (let i = 0; i < 50; i = i + 2) {
+        for (let i = 0; i < 100; i = i + 2) {
             model.profiles.push(new ProfileModel("41기", `김재희${i}`, "010-2667-5772", "lfds9ff0@naver.com", "7반", i));
             model.profiles.push(new ProfileModel("41기", `김재희${i + 1}`, "010-2667-5772", "toj@t2l.co.kr", "7반", i + 1));
         }
-        model.profiles.push(new ProfileModel("41기", "김재희", "010-2667-5772", "toj@t2l.co.kr", "7반", 45))
+        model.profiles.push(new ProfileModel("41기", "김재희", "010-2667-5772", "toj@t2l.co.kr", "7반", 44))
+        return model;
     }
 
     findByName(name) {
         const list = [];
+        console.log(name)
         this.profiles.forEach((profile) => {
             if (profile.name === name) {
+                list.push(profile)
             }
-            list.push(profile)
         })
         return list;
     }
@@ -45,11 +47,12 @@ class ProfileModel {
         this.mail = mail ? mail : [""];
         this.note = note ? note : [""];
         this.index = index ? index : [""];
+        this.key = window.crypto.randomUUID();
     }
 
-    getTableRow() {
+    getTableRow(onClickFnc) {
         return (
-            <tr className={"profile-tableBody-tr"} data-index={this.index}>
+            <tr className={"profile-tableBody-tr"} data-index={this.index} key={`${this.key}`} onClick={() => onClickFnc(this.index)}>
                 <td className={"profile-tableBody-td"}>{this.belong}</td>
                 <td className={"profile-tableBody-td"}>{this.name}</td>
                 <td className={"profile-tableBody-td"}>{this.contact}</td>

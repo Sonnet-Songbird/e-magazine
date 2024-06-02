@@ -1,10 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import PageController from "../../component/fragment/PageController";
 import "./AlbumDesktop.css";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {DirectoryModel} from "../../model/ProfileModel";
 
 const AlbumDesktop = ({contentModel}) => {
-    const [selectedChkbox, goTo] = useState(0);
-
+    const [currentPage, goTo] = useState(0);
+    const [directoryModel, setDirectoryModel] = useState()
+    const [searchResult, setSearchResult] = useState()
+    const searchInput = useRef();
     const contents = () => {
         return contentModel.contents;
     };
@@ -13,24 +18,17 @@ const AlbumDesktop = ({contentModel}) => {
         return contentModel.contents.length;
     };
 
-    const movePage = (number) => {
-        const target = (selectedChkbox + number * 2) & ~1;
-        if (target <= length()) {
-            goTo(target);
-        }
-    };
-
     useEffect(() => {
         const pageCount = Math.ceil(length());
-        if (selectedChkbox < 0) {
+        if (currentPage < 0) {
             goTo(0);
             return;
         }
-        if (selectedChkbox > pageCount) {
+        if (currentPage > pageCount) {
             goTo(pageCount);
             return;
         }
-        const pageIdx = Math.ceil(selectedChkbox / 2);
+        const pageIdx = Math.ceil(currentPage / 2);
         const chkboxes = document.querySelectorAll(".flipChkbox");
         chkboxes.forEach((item, index) => {
             item.removeAttribute("checked");
@@ -39,9 +37,28 @@ const AlbumDesktop = ({contentModel}) => {
                 item.setAttribute("checked", "");
             }
         });
-    }, [contentModel, selectedChkbox]);
+    }, [contentModel, currentPage]);
+
 
     useEffect(() => {
+        initFlippageStyle();
+        tempInitDirectoryModel()
+    }, [contentModel]);
+
+
+    useEffect(() => {
+        if (currentPage % 2 !== 0) {
+            goTo(currentPage + 1);
+        }
+    }, [currentPage]);
+
+
+    useEffect(() => {
+        initSearchResult()
+    }, [directoryModel]);
+
+
+    function initFlippageStyle() {
         const pageCount = Math.ceil(length());
         let css = '';
 
@@ -79,7 +96,7 @@ const AlbumDesktop = ({contentModel}) => {
         const style = document.createElement('style');
         style.appendChild(document.createTextNode(css));
         document.head.appendChild(style);
-    }, [contentModel]);
+    }
 
     const renderPages = () => {
         const pageCount = Math.ceil(length() / 2);
@@ -90,11 +107,11 @@ const AlbumDesktop = ({contentModel}) => {
             const backContent = contents()[backIndex];
             return (
                 <div className="flip" key={idx} id={`p${idx + 1}`}>
-                    <div className="front" onClick={() => goTo(selectedChkbox + 2)}>
+                    <div className="front" onClick={() => goTo(currentPage + 2)}>
                         {frontContent !== undefined && frontContent}
                     </div>
                     {backContent !== undefined && (
-                        <div className="back" onClick={() => goTo(selectedChkbox - 2)}>
+                        <div className="back" onClick={() => goTo(currentPage - 2)}>
                             {backContent}
                         </div>
                     )}
@@ -102,16 +119,41 @@ const AlbumDesktop = ({contentModel}) => {
             );
         });
     };
-    useEffect(() => {
-        if (selectedChkbox % 2 !== 0) {
-            goTo(selectedChkbox + 1);
-        }
-    }, [selectedChkbox]);
-
     const renderCheckboxes = () => {
         return Array.from({length: Math.ceil(length() / 2)}, (_, idx) => (
             <input key={idx} type="checkbox" className="flipChkbox" id={`c${idx + 1}`}/>
         ));
+    };
+
+
+    //TODO: temp
+    const tempInitDirectoryModel = () => {
+        const model = DirectoryModel.createMock();
+        setDirectoryModel(model)
+    }
+
+    const initSearchResult = () => {
+        if (directoryModel) {
+            setSearchResult(directoryModel.profiles)
+        }
+    }
+
+    const onSearchBtn = () => {
+        const keyword = searchInput.current.value;
+        const result = directoryModel.findByName(keyword)
+        setSearchResult(result)
+        if (result.length === 1) {
+            goTo(result[0].index)
+        }
+    }
+    const onResultClick = (index, that) => {
+        goTo(index)
+    }
+    const movePage = (number) => {
+        const target = (currentPage + number * 2) & ~1;
+        if (target <= length()) {
+            goTo(target);
+        }
     };
 
     return (
@@ -124,8 +166,42 @@ const AlbumDesktop = ({contentModel}) => {
                             alt="headong_mark.png"
                             src="https://sonnet-songbird.github.io/e-magazine/pics/haedong_mark.png"
                         />
-                    </div>
+                        <div className={"aside-search-box"}>
+                            <input className={"aside-search-input"} placeholder={"이름을 입력해주세요"} ref={searchInput}/>
+                            <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#4699EB",}}
+                                             className={"aside-search-btn"} onClick={onSearchBtn}/>
+                        </div>
 
+
+                    </div>
+                    <div className={"aside-body"}>
+                        <div className={"aside-search-resultWrapper"}>
+                            <table className={"aside-search-result"}>
+                                <thead className={"aside-search-header"}>
+                                    <tr className={"aside-search-headerRow"}>
+                                        <th>소속</th>
+                                        <th>성명</th>
+                                        <th>연락처</th>
+                                        <th>메일</th>
+                                        <th>메모</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="aside-search-body">
+                                    {searchResult && Array.isArray(searchResult) && searchResult.length > 0 ? (
+                                        searchResult.map((item, index) => {
+                                            return item.getTableRow(onResultClick);
+                                        })
+                                    ) : (
+                                        <tr>
+                                            <td className={"aside-search-noResult profile-tableBody-tr"} colSpan="5">
+                                                결과가 없습니다.
+                                            </td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </aside>
             <div className="reading-section">
@@ -138,7 +214,7 @@ const AlbumDesktop = ({contentModel}) => {
                     </div>
                 </div>
                 <PageController
-                    current={selectedChkbox}
+                    current={currentPage}
                     total={(length()) & ~1}
                     nextText={"다음"}
                     goToFnc={goTo}

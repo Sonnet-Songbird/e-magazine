@@ -39,7 +39,7 @@ export default function PageController({
 
     return (
         <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "2rem"}}
-             className="page-controller-container p-3">
+             className="page-controller-container">
             <div className={"control-page-count"}
                  style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
                 <Form.Control
@@ -66,23 +66,19 @@ export default function PageController({
             </div>
 
             {prevClickFnc || nextClickFnc || resetClickFnc ? (
-                <div className={"btn-container"}
-                     style={{display: "flex", justifyContent: "space-between", gap: "0.5rem"}}>
+                <div className={"btn-container"}>
                     {prevClickFnc && (
-                        <Button className="btn-prev " variant="outline-primary" onClick={prevClickFnc}
-                                style={{border: '#4699EB solid 3px'}}>
+                        <Button className="btn-prev " variant="outline-primary" onClick={prevClickFnc}>
                             {prevText}
                         </Button>
                     )}
                     {resetClickFnc && (
-                        <Button className="btn-reset " variant="outline-primary" onClick={resetClickFnc}
-                                style={{border: '#4699EB solid 3px'}}>
+                        <Button className="btn-reset " variant="outline-primary" onClick={resetClickFnc}>
                             {resetText}
                         </Button>
                     )}
                     {nextClickFnc && (
-                        <Button className="btn-next " variant="outline-primary" onClick={nextClickFnc}
-                                style={{border: '#4699EB solid 3px'}}>
+                        <Button className="btn-next " variant="outline-primary" onClick={nextClickFnc}>
                             {nextText}
                         </Button>
                     )}
