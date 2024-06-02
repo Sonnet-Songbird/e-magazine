@@ -160,6 +160,12 @@ const AlbumDesktop = ({contentModel}) => {
         }
     };
 
+    const onKeyDown = (event) => {
+        if (event.key === "Enter") {
+            onSearchBtn();
+        }
+    };
+
     return (
         <div className="album-desktop">
             <aside className="aside-section">
@@ -171,7 +177,7 @@ const AlbumDesktop = ({contentModel}) => {
                             src="https://sonnet-songbird.github.io/e-magazine/pics/haedong_mark.png"
                         />
                         <div className={"aside-search-box"}>
-                            <input className={"aside-search-input"} placeholder={"이름을 입력해주세요"} ref={searchInput}/>
+                            <input className={"aside-search-input"} placeholder={"이름을 입력해주세요"} ref={searchInput} onKeyDown={onKeyDown}/>
                             <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#4699EB",}}
                                              className={"aside-search-btn"} onClick={onSearchBtn}/>
                         </div>

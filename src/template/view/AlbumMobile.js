@@ -83,8 +83,12 @@ const AlbumMobile = ({contentModel}) => {
             if (result.length === 1) {
                 goTo(result[0].index)
             }
-
         }
+        const onKeyDown = (event) => {
+            if (event.key === "Enter") {
+                onSearchBtn();
+            }
+        };
         return (
             <div className={"album-mobile"}>
                 <div className={"album-mobile-inner"}>
@@ -134,7 +138,7 @@ const AlbumMobile = ({contentModel}) => {
                             </div>
                         </Offcanvas>
                         <div className={"header-search-box"}>
-                            <input className={"header-search-input"} placeholder={"이름을 입력해주세요"} ref={searchInput}/>
+                            <input className={"header-search-input"} placeholder={"이름을 입력해주세요"} ref={searchInput} onKeyDown={onKeyDown}/>
                             <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#4699EB",}}
                                              className={"header-search-btn"} onClick={onSearchBtn}/>
                         </div>
