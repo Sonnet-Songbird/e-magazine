@@ -147,7 +147,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .album-desktop .aside-search-input {
@@ -155,8 +154,6 @@
     text-decoration: none;
     letter-spacing: 0;
     font: normal normal normal 12px/14px Pretendard;
-
-
 }
 
 .album-desktop .aside-search-input:focus {
@@ -166,19 +163,6 @@
 .album-desktop .aside-search-resultWrapper {
     overflow: auto;
     max-height: 970px;
-
-
-}
-
-
-
-.album-desktop .aside-search-input::placeholder {
-    color: #4699EB80;
-}
-
-.album-desktop .aside-search-btn {
-    width: 14px;
-    height: 14px;
 }
 .album-desktop * ::-webkit-scrollbar {
     width: 3px;
@@ -194,10 +178,18 @@
     background-color: #DEDEDE;
     border-radius: 10px;
 }
-.album-desktop .aside-search-body {
-    max-height: 400px;
-    overflow-y: scroll;
+
+
+
+.album-desktop .aside-search-input::placeholder {
+    color: #4699EB80;
 }
+
+.album-desktop .aside-search-btn {
+    width: 14px;
+    height: 14px;
+}
+
 
 .album-desktop .aside-search-headerRow {
     position: sticky;
@@ -230,4 +222,10 @@
 }
 .album-desktop .profile-tableBody-tr:active {
     text-shadow: 0 0 10px #61dafb;
+}
+.album-desktop .profile-tableBody-tr.aside-search-noResult{
+    cursor: default;
+}
+.album-desktop .profile-tableBody-tr.aside-search-noResult:active {
+    text-shadow: none;
 }

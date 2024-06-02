@@ -47,10 +47,14 @@ const AlbumDesktop = ({contentModel}) => {
 
 
     useEffect(() => {
-        if (currentPage % 2 !== 0) {
-            goTo(currentPage + 1);
+        const maxPage = length() - 1;
+        const isOdd = currentPage % 2 !== 0;
+        const isLast = currentPage > maxPage;
+
+        if (isOdd || isLast) {
+            goTo(Math.min(currentPage + 1, maxPage));
         }
-    }, [currentPage]);
+    }, [currentPage, length]);
 
 
     useEffect(() => {
@@ -150,7 +154,7 @@ const AlbumDesktop = ({contentModel}) => {
         goTo(index)
     }
     const movePage = (number) => {
-        const target = (currentPage + number * 2) & ~1;
+        const target = (currentPage + (number * 2)) & ~1;
         if (target <= length()) {
             goTo(target);
         }
@@ -215,7 +219,7 @@ const AlbumDesktop = ({contentModel}) => {
                 </div>
                 <PageController
                     current={currentPage}
-                    total={(length()) & ~1}
+                    total={(length()) - 1}
                     nextText={"다음"}
                     goToFnc={goTo}
                     nextClickFnc={() => {

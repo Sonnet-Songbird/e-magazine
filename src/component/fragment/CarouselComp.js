@@ -5,7 +5,6 @@ import {Children, useEffect} from "react";
 function CarouselComp({children, active, goToFunc, interval = null}) {
 
     useEffect(() => {
-        console.log(active)
     }, [active]);
     const renderItems = () => {
         return Children.map(children, (child, idx) => (

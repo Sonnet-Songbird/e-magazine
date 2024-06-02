@@ -53,7 +53,7 @@ export default function PageController({
                     min={0}
                     max={total}
                 />
-                <Form.Label className="p-2 contol-page-slash">
+                <Form.Label className="p-2 control-page-slash">
                     &nbsp;/&nbsp;
                 </Form.Label>
                 <Form.Control

@@ -1,4 +1,4 @@
-// import './App.css';
+import './App.css';
 import ViewModel from "./component/ViewModel";
 
 function App() {

@@ -1,0 +1,245 @@
+.album-mobile .mark-headong {
+    width: 32px;
+    height: 32px;
+}
+
+.album-mobile .btn-offcanvas {
+    width: 32px;
+    height: 32px;
+}
+
+.album-mobile .album-mobile-inner {
+    margin-inline: 1rem;
+}
+
+.offcanvas {
+    top: 35px !important;
+    width: 100vw !important;
+}
+
+.offcanvas-table-headerRow th {
+    font: normal normal normal 12px/14px Pretendard;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.offcanvas-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 1rem 22px;
+}
+
+.offcanvas-table-wrapper {
+    overflow: auto;
+    max-height: calc(100vh - 35px);
+}
+
+.offcanvas * ::-webkit-scrollbar {
+    width: 3px;
+}
+
+.offcanvas *::-webkit-scrollbar-thumb {
+    background-color: #979797;
+    border-radius: 10px;
+    border: 2px solid transparent;
+}
+
+.offcanvas *::-webkit-scrollbar-track {
+    background-color: #DEDEDE;
+    border-radius: 10px;
+}
+
+.offcanvas .offcanvas-table-headerRow {
+    position: sticky;
+    background: #ffffff;
+    top: 22px;
+    z-index: 2;
+    box-shadow: 0 -20px 0 20px #ffffff;
+}
+
+.offcanvas-table-noResult {
+    text-align: center;
+}
+
+.profile-tableBody-tr {
+    font: normal normal normal 14px/16px Pretendard;
+    padding-inline: 4px;
+    cursor: pointer;
+}
+
+.profile-tableBody-tr:active {
+    text-shadow: 0 0 10px #61dafb;
+}
+
+.album-mobile {
+    padding: 1vw;
+    border: none;
+}
+
+
+.album-mobile .pages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.album-mobile .mobile-header-icon-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.album-mobile .searchbar input {
+    border: 0;
+    border-bottom: 3px solid #4699EB;
+}
+
+
+.album-mobile .btn-reset {
+    width: 33vw;
+    border: #4699EB solid 3px;
+    border-radius: 36px;
+    color: #4699EB;
+}
+
+/*부트스트랩 기본 속성을 오버라이드*/
+.album-mobile .btn-reset:hover {
+    background-color: #ffffff;
+    border: #4699EB solid 3px;
+    color: #4699EB;
+}
+
+.album-mobile .btn-reset:active {
+    background-color: #4699EB;
+    color: #ffffff;
+}
+
+
+.album-mobile #pageFinder {
+    width: 80%;
+    margin-inline: auto;
+}
+
+.album-mobile #pageFinder input {
+    width: 100%;
+    padding: 0.5vw;
+    margin-bottom: 1vw;
+    box-sizing: border-box;
+}
+
+.album-mobile #pageFinder button {
+    width: 100%;
+    padding: 0.5vw;
+}
+
+.album-mobile #pageFinder table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1vw;
+}
+
+.album-mobile #pageFinder th, .album-mobile #pageFinder td {
+    border: 0.1vw solid #ccc;
+    padding: 0.5vw;
+}
+
+
+.album-mobile .item img {
+    width: 100%;
+}
+
+.album-mobile .control-page-slash {
+    line-height: 100%;
+    color: #4699EB;
+    margin-bottom: 0;
+}
+
+.album-mobile .control-page-input {
+    background-color: transparent !important;
+    border: 1px solid #4699EB;
+    text-align: center;
+    color: #4699EB;
+    width: 40px;
+    height: 25px;
+    font: normal normal normal 14px/16px Pretendard;
+    padding: 0;
+}
+
+.album-mobile .control-page-total {
+    border: none;
+}
+
+
+.album-mobile .carousel-control-prev-icon {
+    display: none;
+}
+
+.album-mobile .carousel-control-next-icon {
+    display: none;
+}
+
+.album-mobile .header-search-box {
+    height: 30px;
+    padding: 10px;
+    width: 300px;
+    /*border: 0;*/
+    border-bottom: #4699EB solid 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline:auto;
+    margin-top: 55px;
+}
+
+.album-mobile .header-search-input {
+    border: 0;
+    text-decoration: none;
+    letter-spacing: 0;
+    font: normal normal normal 12px/14px Pretendard;
+}
+
+.album-mobile .header-search-input:focus {
+    outline: none;
+}
+
+.album-mobile .header-search-input::placeholder {
+    color: #4699EB80;
+}
+
+.album-mobile .header-search-btn {
+    width: 14px;
+    height: 14px;
+}
+
+
+.album-mobile .header-search-headerRow {
+    display: none;
+}
+
+.album-mobile .header-search-result {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 1rem 22px;
+    padding-block: 8px;
+}
+
+.album-mobile .header-search-noResult {
+    text-align: center;
+}
+
+.album-mobile .profile-tableBody-tr {
+    font: normal normal normal 14px/16px Pretendard;
+    padding-inline: 4px;
+    cursor: pointer;
+}
+
+.album-mobile .profile-tableBody-tr:active {
+    text-shadow: 0 0 10px #61dafb;
+}
+
+.album-mobile .profile-tableBody-tr.header-search-noResult {
+    cursor: default;
+}
+.album-mobile .profile-tableBody-tr.header-search-noResult:active {
+    text-shadow: none;
+}
