@@ -1,4 +1,3 @@
-//index와 Theme에 대한 Facade를 겸함
 import {isMobile} from "react-device-detect";
 
 export class ContentModel {
@@ -21,6 +20,14 @@ export class ContentModel {
         }
 
         return copy;
+    }
+
+    mergeContent(targetIdx, source) {
+        const current = this.contents[targetIdx]
+        this.contents[targetIdx] = (<>
+            {current}
+            {source}
+        </>)
     }
 
     getTheme() {
@@ -99,7 +106,7 @@ class IndexModel {
         const results = [];
         for (const [key, values] of Object.entries(this.keyIndex)) {
             for (const value of values) {
-                if (this._isHit(value, keyword)) {
+                if (this.isHit(value, keyword)) {
                     results.push({idx: key, keyword: value});
                 }
             }
@@ -107,7 +114,7 @@ class IndexModel {
         return results;
     }
 
-    _isHit(value, keyword) {
+    isHit(value, keyword) {
         if (this.isInclude) {
             return value.toLowerCase().includes(keyword);
         } else {
