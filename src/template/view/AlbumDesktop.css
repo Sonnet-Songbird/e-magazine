@@ -229,3 +229,13 @@
 .album-desktop .profile-tableBody-tr.aside-search-noResult:active {
     text-shadow: none;
 }
+
+.album-desktop .btn-school-song{
+    position: absolute;
+    left: 300px;
+    top: 50px;
+    cursor: pointer;
+    width: 54px;
+    height: 54px;
+    color: #4699EB;
+}

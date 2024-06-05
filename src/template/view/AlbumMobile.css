@@ -243,3 +243,12 @@
 .album-mobile .profile-tableBody-tr.header-search-noResult:active {
     text-shadow: none;
 }
+.album-mobile .btn-school-song{
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    cursor: pointer;
+    width: 54px;
+    height: 54px;
+    color: #4699EB;
+}
