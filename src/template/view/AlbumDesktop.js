@@ -3,7 +3,7 @@ import PageController from "../../component/fragment/PageController";
 import "./AlbumDesktop.css";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
-import {DirectoryModel} from "../../model/ProfileModel";
+import {album41Directory} from "../../repository/Content/album41Model";
 
 const AlbumDesktop = ({contentModel}) => {
     const [currentPage, goTo] = useState(0);
@@ -132,8 +132,7 @@ const AlbumDesktop = ({contentModel}) => {
 
     //TODO: temp
     const tempInitDirectoryModel = () => {
-        const model = DirectoryModel.createMock();
-        setDirectoryModel(model)
+        setDirectoryModel(album41Directory)
     }
 
     const initSearchResult = () => {
@@ -144,6 +143,11 @@ const AlbumDesktop = ({contentModel}) => {
 
     const onSearchBtn = () => {
         const keyword = searchInput.current.value;
+        searchInput.current.value = ""
+        if(keyword === ""){
+            setSearchResult(directoryModel.profiles)
+            return;
+        }
         const result = directoryModel.findByName(keyword)
         setSearchResult(result)
         if (result.length === 1) {
@@ -189,11 +193,11 @@ const AlbumDesktop = ({contentModel}) => {
                             <table className={"aside-search-result"}>
                                 <thead className={"aside-search-header"}>
                                     <tr className={"aside-search-headerRow"}>
-                                        <th>소속</th>
+                                        <th>기수</th>
                                         <th>성명</th>
                                         <th>연락처</th>
-                                        <th>메일</th>
-                                        <th>메모</th>
+                                        <th>소속</th>
+                                        <th>페이지</th>
                                     </tr>
                                 </thead>
                                 <tbody className="aside-search-body">

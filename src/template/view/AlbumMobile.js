@@ -1,11 +1,11 @@
 import './AlbumMobile.css';
 import React, {useEffect, useRef, useState} from "react";
-import {DirectoryModel} from "../../model/ProfileModel";
 import CarouselComp from "../../component/fragment/CarouselComp";
 import PageController from "../../component/fragment/PageController";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {album41Directory} from "../../repository/Content/album41Model";
 
 const AlbumMobile = ({contentModel}) => {
 
@@ -39,8 +39,7 @@ const AlbumMobile = ({contentModel}) => {
 
         }, [directoryModel]);
         const tempInitDirectoryModel = () => {
-            const model = DirectoryModel.createMock();
-            setDirectoryModel(model)
+            setDirectoryModel(album41Directory)
         }
 
         const initDirectoryList = () => {
@@ -77,6 +76,7 @@ const AlbumMobile = ({contentModel}) => {
 
         const onSearchBtn = () => {
             const keyword = searchInput.current.value;
+            searchInput.current.value = ""
             const result = directoryModel.findByName(keyword)
             setSearchResult(result)
             setShowNoResult(true)
@@ -113,11 +113,11 @@ const AlbumMobile = ({contentModel}) => {
                                 <table className={"offcanvas-table"}>
                                     <thead className={"offcanvas-table-header"}>
                                         <tr className={"offcanvas-table-headerRow"}>
-                                            <th>소속</th>
+                                            <th>기수</th>
                                             <th>성명</th>
                                             <th>연락처</th>
-                                            <th>메일</th>
-                                            <th>메모</th>
+                                            <th>소속</th>
+                                            <th>페이지</th>
                                         </tr>
                                     </thead>
                                     <tbody className="offcanvas-table-body">
@@ -138,7 +138,8 @@ const AlbumMobile = ({contentModel}) => {
                             </div>
                         </Offcanvas>
                         <div className={"header-search-box"}>
-                            <input className={"header-search-input"} placeholder={"이름을 입력해주세요"} ref={searchInput} onKeyDown={onKeyDown}/>
+                            <input className={"header-search-input"} placeholder={"이름을 입력해주세요"} ref={searchInput}
+                                   onKeyDown={onKeyDown}/>
                             <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#4699EB",}}
                                              className={"header-search-btn"} onClick={onSearchBtn}/>
                         </div>

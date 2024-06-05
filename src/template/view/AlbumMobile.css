@@ -231,6 +231,7 @@
     font: normal normal normal 14px/16px Pretendard;
     padding-inline: 4px;
     cursor: pointer;
+    text-align: center;
 }
 
 .album-mobile .profile-tableBody-tr:active {
