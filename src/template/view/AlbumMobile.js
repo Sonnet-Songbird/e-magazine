@@ -179,7 +179,7 @@ const AlbumMobile = ({contentModel}) => {
                         </div>
                     </div>
 
-                    <CarouselComp active={active} goToFunc={goTo}>
+                    <CarouselComp active={active} goToFunc={goTo} touch ={false}>
                         {renderPages()}
                     </CarouselComp>
                     <PageController className={"fixed-bottom"} current={active} total={(length()) - 1}
