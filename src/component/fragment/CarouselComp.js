@@ -2,7 +2,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import {Children, useEffect} from "react";
 
 // @arg items: [component]
-function CarouselComp({children, active, goToFunc, interval = null}) {
+function CarouselComp({children, active, goToFunc, touch = false, interval = null}) {
 
     useEffect(() => {
     }, [active]);
@@ -17,7 +17,7 @@ function CarouselComp({children, active, goToFunc, interval = null}) {
     };
 
     return (
-        <Carousel activeIndex={active} onSelect={goToFunc} interval={interval} indicators={false}>
+        <Carousel activeIndex={active} onSelect={goToFunc} interval={interval} touch={touch} indicators={false}>
             {renderItems()}
         </Carousel>
     );
