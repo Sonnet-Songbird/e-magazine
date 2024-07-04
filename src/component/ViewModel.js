@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import ContentRepo from "../repository/ContentRepo";
 
 export default function ViewModel() {
@@ -11,7 +11,7 @@ export default function ViewModel() {
 
     useEffect(() => {
         if (promptKey) {
-            const key = window.prompt('조회하실 앨범의 key를 입력해주세요.', '41');
+            const key = window.prompt('조회하실 앨범의 기수를 입력해주세요.', '41');
             if (key) {
                 fetchContentModel(key);
             } else {
@@ -55,8 +55,8 @@ export default function ViewModel() {
     };
 
     return (
-        <div >
-            <ThemeComponent contentModel={contentModel} />
+        <div>
+            <ThemeComponent contentModel={contentModel}/>
         </div>
     );
 }
